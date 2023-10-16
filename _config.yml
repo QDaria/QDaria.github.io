@@ -1,0 +1,112 @@
+# Book settings
+title: Mo Houshmand
+author: Daniel Mo Houshmand
+logo: _static/QDaria_logo.png
+#logo: _static/qd_logo.png
+only_build_toc_files: true
+
+# Execution settings
+execute:
+  execute_notebooks: force
+  exclude_patterns:
+    - '_build'
+    - 'Thumbs.db'
+    - '.DS_Store'
+    - '*pattern3withwildcard'
+    - 'dsData.zip'
+    - '_notes'
+
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+#    - amsmath
+    - colon_fence
+#    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+#    - linkify
+#    - replacements
+    - smartquotes
+#    - substitution
+    - tasklist
+
+  myst_url_schemes: [mailto, http, https]
+  myst_dmath_double_inline: true
+
+extensions:
+    - myst_parser
+    
+
+# HTML-specific settings
+html:
+  use_issues_button: True
+  use_repository_button: True
+  use_multitoc_numbering: True
+  use_edit_page_button: True
+  style_nav_header_background: #0538f5
+  search_bar_text: Search this book...
+  extra_navbar: Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  home_page_in_navbar: True
+  extra_footer: ''
+  collapse_navigation: #add-a-link-to-your-repositoryxsx
+  sticky_navigation: True
+  navigation_depth: 5
+  includehidden: True
+  titles_only: True
+  baseurl: "https://qdaria.com"
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+  latex_engine: pdflatex
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Launch button settings
+launch_buttons:
+  notebook_interface: classic
+  binderhub_url: https://mybinder.org
+  thebe: True
+
+# Information about where the book exists on the web
+repository:
+  url: https://QDaria.github.io/
+  path_to_book: docs
+  branch: main
+
+sphinx:
+  extra_extensions:
+  - sphinx_inline_tabs
+  - sphinx_jupyterbook_latex
+  - myst_nb
+  - sphinx_copybutton
+  - sphinx_design
+
+  config:
+    html_theme: sphinx_rtd_theme
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    #html_theme: sphinx_book_theme 
+    #html_theme: pydata_sphinx_theme 
+    pygments_style: material
+    html_title: Daniel Mo Houshmand
+    html_static_path: [_static]
+    html_css_files: [custom.css]
+    #html_sidebars:  globaltoc.html, relations.html, sourcelink.html, searchbox.html, localtoc.html
+    html_theme_options:
+      logo_only: true
+      #use_download_button: True
+      #repository_url: https://github.com/QDaria/QDaria.github.io
+      display_version: True
+      prev_next_buttons_location: bottom
+      collapse_navigation: True
+      sticky_navigation: True
+      navigation_depth: 5
+      includehidden: True
+      titles_only: True
+    latex_toplevel_sectioning: 'part'
+
+#add-a-link-to-your-repository
