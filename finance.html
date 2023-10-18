@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Implications of Topological Quantum Computers &mdash; Daniel Mo Houshmand</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mo_addmination.css" type="text/css" />
+      <link rel="stylesheet" href="_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mo_addmination.css" type="text/css" />
+    <link rel="canonical" href="https://qdaria.com/finance.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="_static/design-tabs.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="_static/sphinx-thebe.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quantum Machine Learning" href="qml.html" />
+    <link rel="prev" title="Explore Quantum Computers Interactively" href="qc_demo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="intro.html">
+            
+              <img src="_static/QDaria_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Explore Quantum Computers Interactively</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qc_demo.html">Explore Quantum Computers Interactively</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Financial - Throwing a coin in the the air</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Financial Implications of Topological Quantum Computers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quantum Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qml.html">Quantum Machine Learning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">A Rough Business Plan</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bp.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bp.html#company-description">Company Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bp.html#products-services">Products &amp; Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bp.html#product-description">Product Description:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bp.html#service-offerings-quantum-software-development-consulting-services-and-training-programs">Service Offerings: Quantum software development, consulting services, and training programs.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bp.html#market-growth-and-forecasts">Market Growth and Forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bp.html#financial-implications-of-topological-quantum-computers">Financial Implications of Topological Quantum Computers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="intro.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="intro.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Financial Implications of Topological Quantum Computers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/finance.md" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="financial-implications-of-topological-quantum-computers">
+<h1>Financial Implications of Topological Quantum Computers<a class="headerlink" href="#financial-implications-of-topological-quantum-computers" title="Permalink to this heading"></a></h1>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sector</p></th>
+<th class="head"><p>Market Size (Approx.)</p></th>
+<th class="head"><p>Pessimistic Annual Value</p></th>
+<th class="head"><p>Moderate Annual Value</p></th>
+<th class="head"><p>Slighly Optimistic Annual Value</p></th>
+<th class="head"><p>Realistic Annual Value</p></th>
+<th class="head"><p>Optimistic Annual Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Drug Discovery</strong></p></td>
+<td><p>$50.1 billion</p></td>
+<td><p>$5 billion</p></td>
+<td><p>$10 billion</p></td>
+<td><p>$15 billion</p></td>
+<td><p>$30 billion</p></td>
+<td><p>$60 billion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Personalized Medicine</strong></p></td>
+<td><p>$3.5 trillion</p></td>
+<td><p>$20 billion</p></td>
+<td><p>$35 billion</p></td>
+<td><p>$50 billion</p></td>
+<td><p>$100 billion</p></td>
+<td><p>$200 billion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Diagnostic Tools</strong></p></td>
+<td><p>$50 billion</p></td>
+<td><p>$5 billion</p></td>
+<td><p>$7.5 billion</p></td>
+<td><p>$10 billion</p></td>
+<td><p>$20 billion</p></td>
+<td><p>$40 billion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data Management in Healthcare</strong></p></td>
+<td><p>$50 billion</p></td>
+<td><p>$5 billion</p></td>
+<td><p>$7.5 billion</p></td>
+<td><p>$10 billion</p></td>
+<td><p>$20 billion</p></td>
+<td><p>$40 billion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RSA Breaking &amp; Cryptocurrency</strong></p></td>
+<td><p>$600 billion</p></td>
+<td><p>$200 billion</p></td>
+<td><p>$300 billion</p></td>
+<td><p>$400 billion</p></td>
+<td><p>$600 billion</p></td>
+<td><p>$1.2 trillion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Quantum-Resistant Security Market</strong></p></td>
+<td><p>$500 billion by 2030</p></td>
+<td><p>$25 billion</p></td>
+<td><p>$37.5 billion</p></td>
+<td><p>$50 billion</p></td>
+<td><p>$100 billion</p></td>
+<td><p>$200 billion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Financial Services</strong></p></td>
+<td><p>$22 trillion</p></td>
+<td><p>$70 billion</p></td>
+<td><p>$110 billion</p></td>
+<td><p>$165 billion</p></td>
+<td><p>$330 billion</p></td>
+<td><p>$660 billion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Supply Chain Management</strong></p></td>
+<td><p>$15 trillion</p></td>
+<td><p>$75 billion</p></td>
+<td><p>$112.5 billion</p></td>
+<td><p>$150 billion</p></td>
+<td><p>$300 billion</p></td>
+<td><p>$600 billion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Traffic Routing</strong></p></td>
+<td><p>$2 trillion</p></td>
+<td><p>$40 billion</p></td>
+<td><p>$70 billion</p></td>
+<td><p>$100 billion</p></td>
+<td><p>$200 billion</p></td>
+<td><p>$400 billion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stock Market (from optimizations)</strong></p></td>
+<td><p>$100 trillion</p></td>
+<td><p>$250 billion</p></td>
+<td><p>$375 billion</p></td>
+<td><p>$500 billion</p></td>
+<td><p>$1 trillion</p></td>
+<td><p>$2 trillion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Material Science</strong></p></td>
+<td><p>$1.2 trillion</p></td>
+<td><p>$10 billion</p></td>
+<td><p>$20 billion</p></td>
+<td><p>$30 billion</p></td>
+<td><p>$60 billion</p></td>
+<td><p>$120 billion</p></td>
+</tr>
+<tr class="row-odd"><td><p>—————————————-</p></td>
+<td><p>———————–</p></td>
+<td><p>————————-</p></td>
+<td><p>———————–</p></td>
+<td><p>————————-</p></td>
+<td><p>—————————–</p></td>
+<td><p>———————————-</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total Potential Impact</strong></p></td>
+<td><p>$144.9 trillion</p></td>
+<td><p>~$700 billion</p></td>
+<td><p>~$1.085 trillion</p></td>
+<td><p>~$1.435 trillion</p></td>
+<td><p>~$2.86 trillion</p></td>
+<td><p>~$5.72 trillion</p></td>
+</tr>
+</tbody>
+</table>
+<section id="material-science">
+<h2>Material Science<a class="headerlink" href="#material-science" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Value Proposition:</strong> The discovery of new materials can lead to transformative applications, including more efficient batteries for electric vehicles, solar panels, and longer-lasting electronics.</p></li>
+<li><p><strong>Market Potential:</strong> <strong>$<span class="math notranslate nohighlight">\(1.2\)</span></strong> trillion by <span class="math notranslate nohighlight">\(2025\)</span> [Source: Nature]</p></li>
+</ul>
+</section>
+<section id="cryptography-and-security">
+<h2>Cryptography and Security<a class="headerlink" href="#cryptography-and-security" title="Permalink to this heading"></a></h2>
+<p><strong>Value Proposition:</strong> Quantum computers have the potential to decrypt RSA encryption, central to internet security. This can present both risks and opportunities in the quantumsafe cryptographic industry.</p>
+<ul class="simple">
+<li><p><strong>Market Insight:</strong> The need for quantum-resistant cryptography is rapidly increasing [Source: National Academies of Sciences, Engineering, and Medicine].</p></li>
+<li></li>
+</ul>
+</section>
+<section id="artificial-intelligence-and-machine-learning">
+<h2>Artificial Intelligence and Machine Learning<a class="headerlink" href="#artificial-intelligence-and-machine-learning" title="Permalink to this heading"></a></h2>
+<p>Value Proposition: Quantum computers may significantly optimize machine learning, benefiting areas such as drug discovery, financial modeling, and traffic management.</p>
+<ul class="simple">
+<li><p><strong>Market Potential:</strong> The Al industry could exceed $<span class="math notranslate nohighlight">\(15\)</span> trillion by <span class="math notranslate nohighlight">\(2030\)</span> [Source: PWC].
+Supply Chain Management</p></li>
+<li><p><strong>Value Proposition:</strong> Quantum computers could significantly enhance supply chain operations, offering more efficient logistics, cost reductions, and improved customer service.</p></li>
+</ul>
+</section>
+<section id="supply-chain-management">
+<h2>Supply Chain Management<a class="headerlink" href="#supply-chain-management" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Value Proposition:</strong> Quantum computers could significantly enhance supply chain operations, offering more efficient logistics, cost reductions, and improved customer service.</p></li>
+<li><p><strong>Market Potential:</strong> <strong>$<span class="math notranslate nohighlight">\(37.4\)</span></strong> billion by <span class="math notranslate nohighlight">\(2027\)</span> with optimization leading $<span class="math notranslate nohighlight">\(150\)</span> billion in annual savings [Source: McKinsey &amp; Company].</p></li>
+</ul>
+</section>
+<section id="financial-modeling">
+<h2>Financial Modeling<a class="headerlink" href="#financial-modeling" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Insights:</strong></p></li>
+</ul>
+<p>Global Financial Market is approximately <strong>$<span class="math notranslate nohighlight">\(26.5\)</span></strong> trillion.
+Potential improvements in areas like algorithmic trading, risk assessment, fraud detection, and derivative pricing through quantum computing could represent billions in added value.
+Just 1% improvement across the financial sector could result in an added value of <strong>$<span class="math notranslate nohighlight">\(265\)</span></strong> billion annually.
+Note: These figures are hypothetical and dependent on numerous variables, such as technological development, market acceptance, regulatory factors, and competitive landscape.
+Climate Modeling</p>
+<ul class="simple">
+<li><p><strong>Value Proposition:</strong> Quantum computers can offer more accurate simulations of complex natural processes, aiding in precise climate predictions and understanding of long-term environmental shifts.</p></li>
+<li><p><strong>Market Insight:</strong> Quantum computing is becoming increasingly relevant in climate change mitigation [Source: World Economic Forum].</p></li>
+</ul>
+</section>
+<section id="traffic-routing-in-smart-cities">
+<h2>Traffic Routing in Smart Cities<a class="headerlink" href="#traffic-routing-in-smart-cities" title="Permalink to this heading"></a></h2>
+<p><strong>Insights:</strong></p>
+<p>The global automotive fuel market stands at approximately <strong>$<span class="math notranslate nohighlight">\(2\)</span></strong> trillion.
+A <span class="math notranslate nohighlight">\(5%\)</span> efficiency improvement through TQCs in traffic optimization could save $100 billion annually.
+Breaking RSA</p>
+<p><strong>Potential Impacts:</strong></p>
+<ul class="simple">
+<li><p><strong>Immediate access to digital assets:</strong> <strong>$<span class="math notranslate nohighlight">\(1-5\)</span></strong> trillion.</p></li>
+<li><p><strong>Quantum-Resistant Encryption Monopoly:</strong> Up to <strong>$<span class="math notranslate nohighlight">\(2\)</span></strong> trillion over a decade.</p></li>
+<li><p><strong>Geopolitical Advantage:</strong> Upwards of <strong>$<span class="math notranslate nohighlight">\(5\)</span></strong> trillion over a decade.</p></li>
+<li><p><strong>Potential losses from trust erosion:</strong>$<span class="math notranslate nohighlight">\(5\)</span>** to <strong>$<span class="math notranslate nohighlight">\(10\)</span></strong> trillion.</p></li>
+<li><p><strong>Note:</strong> A company with TQC capabilities to break RSA might have a net worth between <strong>$<span class="math notranslate nohighlight">\(10-15\)</span></strong> trillion over a decade, balancing gains against risks.
+Drug Discovery and Healthcare</p></li>
+<li><p><strong>Value Proposition:</strong> Quantum computing holds transformative potential for the healthcare sector, from drug discovery to personalized medicine.</p></li>
+<li><p><strong>Market Potential:</strong> Global healthcare is valued at over <span class="math notranslate nohighlight">\(11 trillion, with the pharmaceutical industry at \)</span>1.2 trillion. With quantum advancements, these figures could see significant growth.
+Financial Modeling (Additional Insights)</p></li>
+<li><p><strong>Market Size:</strong> Global financial services market is approximately <strong>$<span class="math notranslate nohighlight">\(22\)</span></strong> trillion.
+A modest <strong>$<span class="math notranslate nohighlight">\(0.5%\)</span></strong> improvement through TQCs could result in benefits of <strong>$<span class="math notranslate nohighlight">\(110\)</span></strong> billion annually.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qc_demo.html" class="btn btn-neutral float-left" title="Explore Quantum Computers Interactively" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qml.html" class="btn btn-neutral float-right" title="Quantum Machine Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
