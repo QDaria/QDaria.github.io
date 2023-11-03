@@ -1,17 +1,66 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
-root: intro
-#chapters:
-#- file: markdown
-#- file: notebooks
-#- file: markdown-notebooks
+root: index
 
 parts:
-  - caption: Introduction
-    #numbered: True  # Only applies to chapters in Part 1.
-    chapters:  
-    #- file: intro
-    - file: qc_demo
-    
+  - caption: Quantum Computers
+    #maxdepth: 5
+    numbered: true
+    chapters:
+      - file: quantum_computers/0_QC/0_quantum_computers
+        sections:
+          - file: quantum_computers/0_QC/1_quantum_computers.md
+      - file: quantum_computers/1_spin/1_0_spin
+        sections:
+          - file: quantum_computers/1_spin/1_1_spin_qubits
+          - file: quantum_computers/1_spin/1_2_spin_qubits_op
+          - file: quantum_computers/1_spin/1_3_nmr
+          - file: quantum_computers/1_spin/1_4_molecular_spin_qubits.md
+          - file: quantum_computers/1_spin/1_5_nv_center.md
+          - file: quantum_computers/1_spin/1_6_nv_center_qubits.md
+          - file: quantum_computers/1_spin/1_7_nv_center_qubits_op.md
+      - file: quantum_computers/3_superconducting/3_0_superconducting
+        sections:
+           - file: quantum_computers/3_superconducting/3_1_superconducting_qubits
+           - file: quantum_computers/3_superconducting/3_2_superconducting_qubits_op
+      - file: quantum_computers/4_topological_qubits/4_0_topological.ipynb
+        sections:
+          - file: quantum_computers/4_topological_qubits/4_1_topological_qubits
+          - file: quantum_computers/4_topological_qubits/4_2_topological_qubits_op
+          - file: quantum_computers/4_topological_qubits/4_3_engineeering_TQC.md
+      - file: quantum_computers/5_adiabatic_hybrid/5_0_adiabatic.md
+        sections:
+          - file: quantum_computers/5_adiabatic_hybrid/5_1_quantum_annealing.md
+      - file: quantum_computers/6_semiconductors/6_0_semicunductors.md
+      - file: quantum_computers/7_trapped/7_0_trapped.md
+      - file: quantum_computers/8_photonic/8_0_photonic.md
+
+  - caption: Quantum Machine Learning
+    chapters:
+      - file: qml/1_quantum_systems/1_quantum_systems
+        sections:
+          - file: qml/1_quantum_systems/1_1_Classical_And_Quantum_Probability_Theory_01_.ipynb
+          - file: qml/1_quantum_systems/1_2_Measurements_And_Mixed_States_02
+          - file: qml/1_quantum_systems/1_3_Evolution_in_Closed_and_Open_Systems_03
+          - file: qml/1_quantum_systems/1_4_Classical_and_Quantum_Many_Body_Physics_04
+      - file: qml/2_quantum_computations/2_quantum_computations.ipynb
+        sections:
+          - file: qml/2_quantum_computations/2_1_Gate_Model_Quantum_Computing_05_.ipynb 
+          - file: qml/2_quantum_computations/2_2_Adiabatic_Quantum_Computing_06_.ipynb 
+          - file: qml/2_quantum_computations/2_3_Quantum_Computation_Variational_Circuits_07.ipynb
+          - file: qml/2_quantum_computations/2_4_Sampling_a_Thermal_State_08.ipynb
+      - file: qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms
+        sections: 
+          - file: qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_1_Discrete_Optimization_And_Ensemble_Learning_Ecoding_Classical_Inforfmation_9.ipynb
+          - file: qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_2_Discrete_Optimization_and_Unsupervised_Learning_10.ipynb
+          - file: qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_3_Kernel_Methods_11.ipynb
+          - file: qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_4_Training_Probabilistic_Graphical_Models_12.ipynb 
+      - file: qml/4_Coherent_Learning_Protocols/4_Coherent_Learning_Protocols
+        sections: 
+          - file: qml/4_Coherent_Learning_Protocols/4_1_Quantum_Phase_Estimation_13.ipynb
+          - file: qml/4_Coherent_Learning_Protocols/4_2_Quantum_Matrix_Inversion_14.ipynb
+      - file: qml/5_quantumkernels/5_quantumkernels.ipynb
+        sections: 
+          - file: qml/5_quantumkernels/5_1_svm_15.ipynb
+          - file: qml/5_quantumkernels/5_2_variational_16.ipynb
+       
+            

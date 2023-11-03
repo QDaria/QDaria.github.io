@@ -53,3 +53,11 @@ then the bibliography is inserted with:
 
 This is just a simple starter to get you started.
 You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
+
+
+```{epigraph} Prologue by the CEO
+
+That must be one of the most terryfying sentences I've ever read! Even more intimmidating is; Quantum Machine Learning. And they have to be presented in that specific chronological order for anything to make sense. The reason for that will be clearified as crystally clear as it gets in this educationally pioneeering, easy to read, interactive jupyterbook. 
+
+-- Mo
+```

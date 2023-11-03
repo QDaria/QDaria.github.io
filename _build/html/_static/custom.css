@@ -28,7 +28,7 @@ menu background .wy-side-scroll {
 }
 
 .wy-side-nav-search {
-    background: linear-gradient(17deg, rgb(226, 6, 178) 0%, rgb(245, 5, 173) 99%);
+    background: linear-gradient(17deg, rgba(255, 230, 2, 0.567) 0%, rgb(255, 166, 0) 99%);
 }
 
 .card-container {
@@ -53,4 +53,20 @@ menu background .wy-side-scroll {
 
 .jupyterbook-logo {
     background-color: #d80fb3; /* This is a pink color. Adjust as needed. */
+}
+
+/* docs/_static/custom.css */
+
+:root {
+    --background-color: rgba(253, 126, 20, .3);
+    --border-color: #fd7e14;
+}
+
+div.orange {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+div.orange p.admonition-title {
+    background-color: var(--background-color);
 }

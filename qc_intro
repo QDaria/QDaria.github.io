@@ -1,0 +1,29 @@
+# The Many ways of Engineering a Quantum Computers 
+
+Quantum Computers is a vast field, and while some qubit implementations are more mature and well-researched, others are in their infancy or theoretical stages. Here's an exhaustive list of qubit types and the various platforms being considered or researched for quantum computing:
+
+**Superconducting Qubits:** Microfabricated circuits that exhibit quantum mechanical behavior when cooled.
+Trapped Ions: Individual ions trapped using electromagnetic fields, manipulated with lasers.
+Quantum Dots: Semiconductor-based qubits, with quantum information stored in the spin state of an electron.
+Photonic Qubits: Quantum information encoded in properties of photons, such as polarization.
+Topological Qubits: Based on braiding non-abelian anyons in two-dimensional systems.
+NV (Nitrogen-Vacancy) Centers in Diamond: Quantum information stored in the spin states of electrons in diamond's NV centers.
+Silicon Qubits: Qubits using phosphorus-doped silicon or other silicon-based mechanisms.
+Rydberg Atoms: Atoms in a high-energy state that exhibit strong interactions.
+Cold Atoms in Optical Lattices: Ultra-cold neutral atoms trapped in optical lattices.
+Majorana Fermions: Quasi-particles used to create topological qubits.
+Ferroelectric Qubits: Based on the electric dipole moments in ferroelectric materials.
+Spin Qubits: Qubits based on the intrinsic angular momentum of particles.
+Bosonic Qubits: Using states of a bosonic mode, such as photon number states in a cavity.
+Mechanical Oscillators: Quantum states of macroscopic mechanical oscillators.
+Quantum Dot Hybrid Qubit: A combination of the spin and charge qubits in semiconductor quantum dots.
+Molecular Magnets: Molecules that can retain quantum information in their magnetic states.
+Endohedral Fullerenes: Molecules with atoms trapped inside fullerene cages.
+Quantum Acoustic Resonators: Mechanical systems where quantum states of sound (phonons) can be used.
+Quantum Annealers: Qubits made of superconducting materials, used in machines like those by D-Wave.
+Nuclear Electric Resonance (NER) Qubits: Using the interaction of the electric quadrupole moment of a nucleus with an electric field gradient.
+Nuclear Magnetic Resonance (NMR) Qubits: Based on the magnetic properties of atomic nuclei.
+Quantum Computing with Solitons: Using solitons as carriers of quantum information.
+2D Materials Beyond Graphene: Materials like transition metal dichalcogenides researched for potential quantum properties.
+Hybrid Systems: Combining different quantum systems to leverage the advantages of each.
+It's important to note that while all of these methods are being explored, not all are at the same level of maturity or feasibility. Some are still mostly theoretical, while others have seen significant experimental progress. The eventual "winning" technology, or combination of technologies, will be the one(s) that can best balance issues of coherence, error rates, scalability, and manufacturability.

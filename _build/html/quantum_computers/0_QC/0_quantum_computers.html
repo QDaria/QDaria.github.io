@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Into the Hardware of Quantum Computers &mdash; Daniel Mo Houshmand</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/exercise.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+    <link rel="canonical" href="https://qdaria.com/quantum_computers/0_QC/0_quantum_computers.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.21. Clustering Qubits" href="1_quantum_computers.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="../../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/D62.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quantum Computers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Into the Hardware of Quantum Computers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html">1.21. Clustering Qubits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html#quantum-materials">1.22. Quantum materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html#introduction-to-ket-notation">1.23. Introduction to Ket notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html#multi-qubit-states-operations">1.24. Multi-Qubit States &amp; Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html#advantages-and-dissadvantages-of-ket-notation">1.25. Advantages and dissadvantages of Ket notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html#a-fact-about-maximally-entangled-states">1.26. A fact about maximally entangled states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_quantum_computers.html#experimental-and-theoretical-measurements">1.27. Experimental and theoretical measurements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_spin/1_0_spin.html">2. Spin-Based and Molecular Approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_superconducting/3_0_superconducting.html">3. Superconductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_topological_qubits/4_0_topological.html">4. Topological Qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_adiabatic_hybrid/5_0_adiabatic.html">5. Adiabatic Quantum Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_semiconductors/6_0_semicunductors.html">6. Semiconductor-based qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_trapped/7_0_trapped.html">7. Trapped Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_photonic/8_0_photonic.html">8. Photonic and Optical Approaches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quantum Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/1_quantum_systems/1_quantum_systems.html">Quantum Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/2_quantum_computations/2_quantum_computations.html">Quantum Computations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms.html">Classical Quantum Hybrid Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/4_Coherent_Learning_Protocols/4_Coherent_Learning_Protocols.html">Coherent Learning Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/5_quantumkernels/5_quantumkernels.html">Quantum Kernels</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>Into the Hardware of Quantum Computers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/quantum_computers/0_QC/0_quantum_computers.md" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-lg docutils">
+<div class="sd-card-body docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-lg docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><img alt="D13" src="../../_images/D13.png" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="into-the-hardware-of-quantum-computers">
+<h1><span class="section-number">1. </span>Into the Hardware of Quantum Computers<a class="headerlink" href="#into-the-hardware-of-quantum-computers" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#superconducting-qubits" id="id1">Superconducting Qubits</a></p></li>
+<li><p><a class="reference internal" href="#trapped-ions" id="id2">Trapped Ions</a></p></li>
+<li><p><a class="reference internal" href="#topological-qubits" id="id3">Topological Qubits</a></p></li>
+<li><p><a class="reference internal" href="#quantum-dots" id="id4">Quantum Dots</a></p></li>
+<li><p><a class="reference internal" href="#photonic-qubits" id="id5">Photonic Qubits</a></p></li>
+<li><p><a class="reference internal" href="#nitrogen-vacancy-centers-in-diamond" id="id6">Nitrogen-Vacancy Centers in Diamond</a></p></li>
+<li><p><a class="reference internal" href="#rydberg-atoms" id="id7">Rydberg Atoms</a></p></li>
+<li><p><a class="reference internal" href="#nuclear-magnetic-resonance-nmr" id="id8">Nuclear Magnetic Resonance (NMR)</a></p></li>
+<li><p><a class="reference internal" href="#silicon-qubits" id="id9">Silicon Qubits</a></p></li>
+<li><p><a class="reference internal" href="#neutral-atom-qubits" id="id10">Neutral Atom Qubits</a></p></li>
+<li><p><a class="reference internal" href="#majorana-fermions" id="id11">Majorana Fermions:</a></p></li>
+<li><p><a class="reference internal" href="#cold-atom-qubits" id="id12">Cold Atom Qubits</a></p></li>
+<li><p><a class="reference internal" href="#quid-superconducting-quantum-interference-device-qubits" id="id13">QUID (Superconducting Quantum Interference Device) Qubits</a></p></li>
+<li><p><a class="reference internal" href="#quantum-annealing" id="id14">Quantum Annealing</a></p></li>
+<li><p><a class="reference internal" href="#boson-sampling" id="id15">Boson Sampling</a></p></li>
+<li><p><a class="reference internal" href="#cat-qubits" id="id16">Cat Qubits</a></p></li>
+<li><p><a class="reference internal" href="#molecular-spin-qubits" id="id17">Molecular Spin Qubits</a></p></li>
+<li><p><a class="reference internal" href="#d-superconducting-qubits" id="id18">3D Superconducting Qubits</a></p></li>
+<li><p><a class="reference internal" href="#aluminum-gallium-arsenide-qubits" id="id19">Aluminum Gallium Arsenide Qubits</a></p></li>
+<li><p><a class="reference internal" href="#hybrid-qubits" id="id20">Hybrid Qubits</a></p></li>
+</ul>
+</div>
+<p>There are a vast various types of qubits and approaches to building quantum computers:</p>
+<section id="superconducting-qubits">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">1.1. </span>Superconducting Qubits</a><a class="headerlink" href="#superconducting-qubits" title="Permalink to this headline"></a></h2>
+<p>These are circuits made from superconducting materials and behave quantum mechanically. Google and IBM primarily use this approach. There are multiple types of superconducting qubits like the transmon qubit and the flux qubit.</p>
+</section>
+<section id="trapped-ions">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">1.2. </span>Trapped Ions</a><a class="headerlink" href="#trapped-ions" title="Permalink to this headline"></a></h2>
+<p>Individual ions are trapped using electromagnetic fields and are manipulated using lasers. IonQ and Honeywell have made significant progress using this technique.</p>
+</section>
+<section id="topological-qubits">
+<h2><a class="toc-backref" href="#id3"><span class="section-number">1.3. </span>Topological Qubits</a><a class="headerlink" href="#topological-qubits" title="Permalink to this headline"></a></h2>
+<p>These qubits rely on anyons, quasi-particles that exist in two-dimensional space. Microsoft’s StationQ is exploring this route, aiming to build more error-resistant qubits.</p>
+</section>
+<section id="quantum-dots">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">1.4. </span>Quantum Dots</a><a class="headerlink" href="#quantum-dots" title="Permalink to this headline"></a></h2>
+<p>These are semiconductor-based qubits. They use electron spins in a confined region to represent quantum information.</p>
+</section>
+<section id="photonic-qubits">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">1.5. </span>Photonic Qubits</a><a class="headerlink" href="#photonic-qubits" title="Permalink to this headline"></a></h2>
+<p>They use the quantum properties of photons, the elementary particles of light. This approach might lead to inherently fault-tolerant quantum computation.</p>
+</section>
+<section id="nitrogen-vacancy-centers-in-diamond">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">1.6. </span>Nitrogen-Vacancy Centers in Diamond</a><a class="headerlink" href="#nitrogen-vacancy-centers-in-diamond" title="Permalink to this headline"></a></h2>
+<p>These defects in the lattice structure of diamonds can be manipulated at room temperature to function as qubits.</p>
+</section>
+<section id="rydberg-atoms">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">1.7. </span>Rydberg Atoms</a><a class="headerlink" href="#rydberg-atoms" title="Permalink to this headline"></a></h2>
+<p>Atoms are excited to a high-energy state (Rydberg state) where they have exaggerated quantum properties.</p>
+</section>
+<section id="nuclear-magnetic-resonance-nmr">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">1.8. </span>Nuclear Magnetic Resonance (NMR)</a><a class="headerlink" href="#nuclear-magnetic-resonance-nmr" title="Permalink to this headline"></a></h2>
+<p>This technique is derived from the principles behind MRI scans and involves controlling nuclear spins in molecules.</p>
+</section>
+<section id="silicon-qubits">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">1.9. </span>Silicon Qubits</a><a class="headerlink" href="#silicon-qubits" title="Permalink to this headline"></a></h2>
+<p>These qubits use isotopically pure silicon. They work by manipulating the spins of an electron or the nucleus of a phosphorus atom embedded in the silicon.</p>
+</section>
+<section id="neutral-atom-qubits">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">1.10. </span>Neutral Atom Qubits</a><a class="headerlink" href="#neutral-atom-qubits" title="Permalink to this headline"></a></h2>
+<p>Unlike trapped ions, neutral atoms aren’t charged. They can be trapped in arrays using optical tweezers, and they have potential scalability advantages.</p>
+</section>
+<section id="majorana-fermions">
+<h2><a class="toc-backref" href="#id11"><span class="section-number">1.11. </span>Majorana Fermions:</a><a class="headerlink" href="#majorana-fermions" title="Permalink to this headline"></a></h2>
+<p>These are particles that are their own antiparticles. They can be used to build topologically protected qubits.</p>
+</section>
+<section id="cold-atom-qubits">
+<h2><a class="toc-backref" href="#id12"><span class="section-number">1.12. </span>Cold Atom Qubits</a><a class="headerlink" href="#cold-atom-qubits" title="Permalink to this headline"></a></h2>
+<p>Atoms are cooled to near absolute zero temperatures to exhibit quantum behaviors, which are then harnessed for computation.</p>
+</section>
+<section id="quid-superconducting-quantum-interference-device-qubits">
+<h2><a class="toc-backref" href="#id13"><span class="section-number">1.13. </span>QUID (Superconducting Quantum Interference Device) Qubits</a><a class="headerlink" href="#quid-superconducting-quantum-interference-device-qubits" title="Permalink to this headline"></a></h2>
+<p>These are superconducting rings that can detect incredibly small changes in magnetic fields.</p>
+</section>
+<section id="quantum-annealing">
+<h2><a class="toc-backref" href="#id14"><span class="section-number">1.14. </span>Quantum Annealing</a><a class="headerlink" href="#quantum-annealing" title="Permalink to this headline"></a></h2>
+<p>A method used primarily by D-Wave, it’s a type of quantum computation but is different from general-purpose quantum computing. It specializes in optimization problems.</p>
+</section>
+<section id="boson-sampling">
+<h2><a class="toc-backref" href="#id15"><span class="section-number">1.15. </span>Boson Sampling</a><a class="headerlink" href="#boson-sampling" title="Permalink to this headline"></a></h2>
+<p>A type of quantum computation that uses non-interacting bosons and interferometers.</p>
+</section>
+<section id="cat-qubits">
+<h2><a class="toc-backref" href="#id16"><span class="section-number">1.16. </span>Cat Qubits</a><a class="headerlink" href="#cat-qubits" title="Permalink to this headline"></a></h2>
+<p>These superconducting qubits use a principle called Schrödinger’s cat paradox. They exist in a superposition of two macroscopically distinct states.</p>
+</section>
+<section id="molecular-spin-qubits">
+<h2><a class="toc-backref" href="#id17"><span class="section-number">1.17. </span>Molecular Spin Qubits</a><a class="headerlink" href="#molecular-spin-qubits" title="Permalink to this headline"></a></h2>
+<p>These are molecules with unpaired electron spins that can be used to store and process quantum information.</p>
+</section>
+<section id="d-superconducting-qubits">
+<h2><a class="toc-backref" href="#id18"><span class="section-number">1.18. </span>3D Superconducting Qubits</a><a class="headerlink" href="#d-superconducting-qubits" title="Permalink to this headline"></a></h2>
+<p>An advancement of the superconducting qubit design that aims to increase the coherence time by leveraging a three-dimensional design.</p>
+</section>
+<section id="aluminum-gallium-arsenide-qubits">
+<h2><a class="toc-backref" href="#id19"><span class="section-number">1.19. </span>Aluminum Gallium Arsenide Qubits</a><a class="headerlink" href="#aluminum-gallium-arsenide-qubits" title="Permalink to this headline"></a></h2>
+<p>These are semiconductor qubits similar to quantum dots but use the Aluminum Gallium Arsenide material.</p>
+</section>
+<section id="hybrid-qubits">
+<h2><a class="toc-backref" href="#id20"><span class="section-number">1.20. </span>Hybrid Qubits</a><a class="headerlink" href="#hybrid-qubits" title="Permalink to this headline"></a></h2>
+<p>This involves combining different physical systems, like superconducting qubits with trapped ions, to benefit from the advantages of both.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./quantum_computers/0_QC"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="1_quantum_computers.html" class="btn btn-neutral float-right" title="1.21. Clustering Qubits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

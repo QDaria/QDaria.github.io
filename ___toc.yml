@@ -1,0 +1,47 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+#chapters:
+#- file: markdown
+#- file: notebooks
+#- file: markdown-notebooks
+
+parts:
+  - caption: Introduction
+    chapters:  
+    #expand_sections: true
+
+    - file: intro/0_intro
+  - caption: Quantum Machine Learning
+    chapters:
+      
+    - file: qml/quantum_systems/1_quantum_systems_00
+      expand_sections: true
+      sections: 
+      - file: qml/quantum_systems/1_1_Classical_And_Quantum_Probability_Theory_01
+      - file: qml/quantum_systems/1_2_Measurements_And_Mixed_States_02
+      - file: qml/quantum_systems/1_3_Evolution_in_Closed_and_Open_Systems_03
+      - file: qml/quantum_systems/1_4_Classical_and_Quantum_Many_Body_Physics_04
+  - caption: Ways to engineer a quantum computer
+    chapters:  
+    #- file: intr
+    - file: qc_intro
+  - caption: Explore Quantum Computers Interactively
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    - file: qc_demo
+  - caption: Financial - Throwing a coin in the the air
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    #- file: intro
+    - file: finance  
+  - caption: Quantum Machine Learning
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    - file: qml  
+  - caption: A Rough Business Plan
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    - file: bp  

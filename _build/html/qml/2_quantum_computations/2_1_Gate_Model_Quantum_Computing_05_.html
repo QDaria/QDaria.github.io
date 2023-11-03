@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gate-Model Quantum Computing &mdash; Daniel Mo Houshmand</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/exercise.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+    <link rel="canonical" href="https://qdaria.com/qml/2_quantum_computations/2_1_Gate_Model_Quantum_Computing_05_.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../../_static/sphinx-thebe.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Adiabatic Quantum Computing" href="2_2_Adiabatic_Quantum_Computing_06_.html" />
+    <link rel="prev" title="Quantum Computations" href="2_quantum_computations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/D62.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quantum Computers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/0_QC/0_quantum_computers.html">1. Into the Hardware of Quantum Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/1_spin/1_0_spin.html">2. Spin-Based and Molecular Approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/3_superconducting/3_0_superconducting.html">3. Superconductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/4_topological_qubits/4_0_topological.html">4. Topological Qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/5_adiabatic_hybrid/5_0_adiabatic.html">5. Adiabatic Quantum Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/6_semiconductors/6_0_semicunductors.html">6. Semiconductor-based qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/7_trapped/7_0_trapped.html">7. Trapped Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/8_photonic/8_0_photonic.html">8. Photonic and Optical Approaches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quantum Machine Learning</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_quantum_systems/1_quantum_systems.html">Quantum Systems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="2_quantum_computations.html">Quantum Computations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Gate-Model Quantum Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-approximate-optimization-algorithm">Quantum Approximate Optimization Algorithm.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solovay-kitaev-theorem">Solovay-Kitaev theorem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-circuits">Quantum Circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hadamard-gate">Hadamard gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-cnot-gate">The CNOT gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-circuits">Defining circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compilation">Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html">Adiabatic Quantum Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#adiabatic-theorem">Adiabatic Theorem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#unitary-evolution-and-the-hamiltonian">Unitary evolution and the Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#the-adiabatic-theorem-and-adiabatic-quantum-computing">The adiabatic theorem and adiabatic quantum computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#quantum-annealing">Quantum Annealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#chimera-graph">Chimera Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#id1">Quantum annealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#implementations">Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#superconducting-architectures">Superconducting Architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#dissadvantages">Dissadvantages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#trapped-ions">Trapped ions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#photonic-systems">Photonic Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_3_Quantum_Computation_Variational_Circuits_07.html">Quantum Approximate Optimization Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_3_Quantum_Computation_Variational_Circuits_07.html#id1">Quantum approximate optimization algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_3_Quantum_Computation_Variational_Circuits_07.html#analysis-of-the-results">Analysis of the results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html">Sampling a Thermal State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#recap">Recap:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#algorithm">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#quantum-annealing">Quantum annealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#quantum-approximate-thermalization">Quantum Approximate Thermalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#high-temperature">High temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#low-temperature">Low temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_4_Sampling_a_Thermal_State_08.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms.html">Classical Quantum Hybrid Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Coherent_Learning_Protocols/4_Coherent_Learning_Protocols.html">Coherent Learning Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_quantumkernels/5_quantumkernels.html">Quantum Kernels</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="2_quantum_computations.html">Quantum Computations</a></li>
+      <li class="breadcrumb-item active">Gate-Model Quantum Computing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/qml/2_quantum_computations/2_1_Gate_Model_Quantum_Computing_05_.ipynb" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-lg docutils">
+<div class="sd-card-body docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-lg docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><img alt="D54" src="qml/2_quantum_computations/_static/D54.png" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="gate-model-quantum-computing">
+<h1>Gate-Model Quantum Computing<a class="headerlink" href="#gate-model-quantum-computing" title="Permalink to this headline"></a></h1>
+<p>This discourse will focus on gate-model quantum computing, also referred to as the universal quantum computing model. Unlike classical computing, creating an algorithm for a quantum computer necessitates a different software stack. Consider, for instance, defining a problem such as the Traveling Salesman Problem - seeking the shortest possible route to visit a set of cities. In response to this problem definition, an appropriate quantum algorithm needs to be identified. In this case, we will be examining an optimization algorithm known as the Quantum Approximate Optimization Algorithm (QAOA).</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="quantum-approximate-optimization-algorithm">
+<h1>Quantum Approximate Optimization Algorithm.<a class="headerlink" href="#quantum-approximate-optimization-algorithm" title="Permalink to this headline"></a></h1>
+<p>QAOA is a method that, fundamentally, results in a quantum circuit made up of gates and unitary operations. This represents a low-level description akin to the breakdown of a digital circuit. Further in-depth examination would reveal a layer of compilation. This compilation process serves two essential functions. Firstly, it translates a set of gates, if they are not readily compatible with the quantum computer, to an equivalent set that can be implemented by the hardware. Secondly, in situations where there are non-physically connected qubits which necessitate interaction, the compiler must employ sophisticated strategies to circumvent the connectivity issue. The specifics of these strategies will be further discussed in a dedicated video on quantum implementations. Upon successful compilation, the program can be run on a quantum processor unit (QPU), or alternatively, simulated on a quantum system. While the simulation of approximately 20 to 22 qubits can be handled by a standard laptop, a supercomputer may manage up to 50 qubits before the limitations of classical resources are reached.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="solovay-kitaev-theorem">
+<h1>Solovay-Kitaev theorem<a class="headerlink" href="#solovay-kitaev-theorem" title="Permalink to this headline"></a></h1>
+<p>The Solovay-Kitaev theorem is a remarkable statement in the realm of quantum computing. It posits that any unitary operation can be efficiently approximated using a finite number of gates. This theorem underpins the universality of the gate-model quantum computer. Unlike a digital computer, which is universal in its ability to execute any logical operation between bit strings, a quantum computer’s universality lies in its ability to take any quantum state and transform it into any other.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="quantum-circuits">
+<h1>Quantum Circuits<a class="headerlink" href="#quantum-circuits" title="Permalink to this headline"></a></h1>
+<p>To understand quantum circuits, we need to examine the process following decomposition and mapping onto gates and qubit registers. One of the simplest gates in quantum computing is the X gate. This gate flips the 0 to 1 and the 1 to 0, which is analogous to the NOT gate in a classical computer.</p>
+<p>However, unlike classical computers, which only have a single-bit operation (i.e., the NOT gate), quantum computers possess numerous single-qubit operations. In fact, there are infinitely many quantum single-qubit operations. This can be visualized by mapping any qubit onto the surface of a sphere – a surface with a continuous range of values.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="hadamard-gate">
+<h1>Hadamard gate<a class="headerlink" href="#hadamard-gate" title="Permalink to this headline"></a></h1>
+<p>The Hadamard gate is another vital operation in quantum computing. It transforms the 0 state into an equal superposition of 0 and 1 states. Hence, when the Hadamard gate is applied to the 0 state, the resulting state is an equal superposition of 0 and 1. Likewise, when the Hadamard gate is applied to the 1 state, the outcome is a similar superposition, but with a negative sign attached to the 1 state. This gate enables the generation of equal superpositions and, like the X gate, is just one example of the numerous operations possible on the surface of the sphere in quantum computing.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-cnot-gate">
+<h1>The CNOT gate<a class="headerlink" href="#the-cnot-gate" title="Permalink to this headline"></a></h1>
+<p>In quantum computing, the CNOT gate is a two-qubit operation. It consists of a control qubit and a target qubit. If the control qubit is in state 0, the CNOT gate does not affect the target qubit. However, if the control qubit is in state 1, the CNOT gate applies the NOT operation (X operation) to the target qubit.</p>
+<p>For example, if both qubits are initially in the 0,0 state, and the control qubit remains in state 0, the CNOT gate will not change the state of the target qubit. Conversely, if the control qubit changes to state 1, the target qubit will be flipped to state 1.</p>
+<p>To create the “Bell state” or the maximally entangled state, the procedure is as follows:</p>
+<ol class="arabic simple">
+<li><p>Initialize two qubits in the 0,0 state.</p></li>
+<li><p>Apply a Hadamard gate to the control qubit, creating an equal superposition of 0 and 1.</p></li>
+<li><p>Apply the CNOT gate to both qubits.</p></li>
+</ol>
+<p>Upon executing these steps, the resulting quantum state will be an equal superposition of the 0,0 state and the 1,1 state. This represents a maximally entangled state with just two qubits.</p>
+<p>Presently, quantum computers can only execute a relatively small number of gate sequences, typically around 10 to 20 gates. The goal is to scale up these devices and enable the execution of increasingly complex and lengthy algorithms. In later discussions, we’ll delve into the practical applications of these shallow circuits.</p>
+<p><strong>Checkboxes</strong></p>
+<ul class="simple">
+<li><p>A quantum circuit…</p></li>
+</ul>
+<p><strong>Contains quantum gates</strong></p>
+<p><strong>Defines the sequence of operations</strong></p>
+<p>• A digital circuit is universal in the sense that any bit string can be transformed into any other bit string by applying a finite number of gates (two, in fact) a finite number of times. In quantum computers, however, there are continuously many possible probability amplitudes – it is an intrinsically analogue form of computation. The Solovay-Kitaev tells you that…</p>
+<p>– A finite set of gates efficiently approximates any unitary operations.</p>
+<p>• A single-qubit gate…</p>
+<p>– Moves a point on the surface of the Bloch sphere.</p>
+<p>So far you mastered the notation of quantum mechanics and quantum computing, understood as much physics as needed to perform various operations on quantum states, and now you are ready to build quantum algorithms. In this notebook, we look at the basics of gate-model quantum computing, which is sometimes also referred to as universal quantum computing. Most academic and commercial efforts to build a quantum computer focus on this model: Alibaba, Baidu, Google, HP, IBM Q, Intel, IonQ, Microsoft, Rigetti Computing, and Tencent all aim at this, and the list keeps expanding. It remains unclear which implementation will prove scalable: superconducting chips, photonic systems, and ion traps are the most common types, each having its own advantages and disadvantages. We abstract away, we focus on the quantum algorithms irrespective of the physical implementation.</p>
+<p>To get there, first we have to familiarize ourselves with some gates and what happens to those gates on quantum computers. The following diagram shows the software stack that bridges a problem we want to solve with the actual computational back-end [<span class="xref myst">1</span>]:</p>
+<img alt="Software stack on a gate-model quantum computer" src="qml/2_quantum_computations/figures/universal_quantum_workflow.png" />
+<p>First, we define the problem at a high-level and a suitable quantum algorithm is chosen. Then, we express the quantum algorithm as a quantum circuit composed of gates. This in turn has to be compiled to a specific quantum gate set available. The last step is to execute the final circuit either on a quantum processor or on a simulator.</p>
+<p>The quantum algorithms we are interested in are about machine learning. In this notebook, we look at the levels below algorithms: the definition of circuits, their compilation, and the mapping to the hardware or a simulator.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="defining-circuits">
+<h1>Defining circuits<a class="headerlink" href="#defining-circuits" title="Permalink to this headline"></a></h1>
+<p>Circuits are composed of qubit registers, gates acting on them, and measurements on the registers. To store the outcome of registers, many quantum computing libraries add classical registers to the circuits. Even by this language, you can tell that this is a very low level of programming a computer. It resembles the assembly language of digital computers, in which a program consists of machine code instructions.</p>
+<p>Qubit registers are indexed from 0. We often just say qubit 0, qubit 1, and so on, to refer to the register containing a qubit. This is not to be confused with the actual state of the qubit, which can be <span class="math notranslate nohighlight">\(|0\rangle\)</span>, <span class="math notranslate nohighlight">\(|1\rangle\)</span>, or any superposition thereof. For instance, qubit 0 can be in the state <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p>
+<p>Let’s take a look at the gates. In digital computing, a processor transforms bit strings to bit strings with logical gates. Any bit string can be achieved with just two gates, which makes universal computations possible with simple operations composed only of these two types of gates. It is remarkable and surprising that the same is also true for quantum computers: any unitary operation can be decomposed into elementary gates, and three types of gates are sufficient. This is remarkable since we are talking about transforming continuous-valued probability amplitudes, not just discrete elements. Yet, this result is what provides the high-level theoretical foundation for being able to build a universal quantum computer at all.</p>
+<p>Let’s look at some common gates, some of which we have already seen. Naturally, all of these are unitary.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gate</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>           Matrix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>X</p></td>
+<td><p>Pauli-X or NOT gate</p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{bmatrix}0 &amp; 1\\ 1&amp; 0\end{bmatrix}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Z</p></td>
+<td><p>Pauli-Z  gate</p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{bmatrix}1 &amp; 0\\ 0&amp; -1\end{bmatrix}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>H</p></td>
+<td><p>Hadamard gate</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}}\begin{bmatrix}1 &amp; 1\\ 1&amp; -1\end{bmatrix}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rx(<span class="math notranslate nohighlight">\(\theta\)</span>)</p></td>
+<td><p>Rotation around X</p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{bmatrix}\cos(\theta/2) &amp; -i \sin(\theta/2)\\ -i \sin(\theta / 2) &amp; \cos(\theta / 2)\end{bmatrix}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Ry(<span class="math notranslate nohighlight">\(\theta\)</span>)</p></td>
+<td><p>Rotation around Y</p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{bmatrix}\cos(\theta/2) &amp; -\sin(\theta/2)\\ \sin(\theta / 2) &amp; \cos(\theta / 2)\end{bmatrix}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>CNOT, CX</p></td>
+<td><p>Controlled-NOT</p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{bmatrix}1 &amp; 0 &amp; 0 &amp;0\\ 0 &amp; 1 &amp; 0 &amp;0\\ 0 &amp; 0 &amp; 0 &amp;1\\ 0 &amp; 0 &amp; 1 &amp;0\end{bmatrix}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>As we have seen before, the rotations correspond to axis defined in the Bloch sphere.</p>
+<p>There should be one thing immediately apparent from the table: there are many, in fact, infinitely many single-qubit operations. The rotations, for instance, are parametrized by a continuous value. This is in stark contrast with digital circuits, where the only non-trivial single-bit gate is the NOT gate.</p>
+<p>The CNOT gate is the only two-qubit gate in this list. It has a special role: we need two-qubit interactions to create entanglement. Let’s repeat the circuit for creating the <span class="math notranslate nohighlight">\(|\phi^+\rangle = \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)\)</span>. We will have two qubit registers and two classical registers for measurement output. First, let’s define the circuit and plot it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">execute</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">BasicAer</span> <span class="k">as</span> <span class="n">Aer</span>
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">circuit_drawer</span><span class="p">,</span> <span class="n">plot_histogram</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">circuit_drawer</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">      ┌───┐     
+q0_0: ┤ H ├──■──
+      └───┘┌─┴─┐
+q0_1: ─────┤ X ├
+           └───┘
+c0: 2/══════════
+                </pre></div></div>
+</div>
+<p>Note that we can’t just initialize the qubit registers in a state we fancy. All registers are initialized in <span class="math notranslate nohighlight">\(|0\rangle\)</span> and creating a desired state is <strong>part</strong> of the circuit. In a sense, arbitrary state preparation is the same as universal quantum computation: the end of the calculation is a state that we desired to prepare. Some states are easier to prepare than others. The above circuit has only two gates to prepare our target state, so it is considered very easy.</p>
+<p>Let us see what happens in this circuit. The Hadamard gate prepares an equal superposition <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span> in qubit 0. This qubit controls an X gate on qubit 1. Since qubit 0 is in the equal superposition after the Hadamard gate, it will not apply the X gate for the first part of the superposition (<span class="math notranslate nohighlight">\(|0\rangle\)</span>) and it will apply the X gate for the second part of the superposition (<span class="math notranslate nohighlight">\(|1\rangle\)</span>). Thus we create the final state <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)\)</span>, and we entangle the two qubit registers.</p>
+<p>A digital computer’s processing unit typically has 64-bit registers and it is able to perform universal calculations on bit strings. Any complex calculation is broken down into elementary 64-bit operations, either sequentially or in parallel execution. So you may wonder what is the deal with the thousands of qubits we expect from a quantum computer. Why can’t a 64-qubit quantum computer be enough?</p>
+<p>Entanglement is the easiest way to understand why we need so many qubits. Entanglement is a key resource in quantum computing and we want to make use of it. If we have 64-qubits and we want to entangle another one outside these 64 registers, we would have get rid of the qubit in one of the registers, potentially destroying a superposition and definitely destroying entanglement between that register and any other qubit on the chip. The only way to make use of superpositions and the strong correlations provided by entanglement is if the entire problem is on the quantum processing unit for the duration of the calculation.</p>
+<p>This global nature of the calculation is also the reason why there is a focus on problems that are difficult to break down into elementary calculations. The travelling salesman problem is a great example: we need to consider all cities and all distances to minimize overall travel length.</p>
+<p>To finish off the circuit, we could add a measurement to each qubit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">circuit_drawer</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">      ┌───┐     ┌─┐   
+q0_0: ┤ H ├──■──┤M├───
+      └───┘┌─┴─┐└╥┘┌─┐
+q0_1: ─────┤ X ├─╫─┤M├
+           └───┘ ║ └╥┘
+c0: 2/═══════════╩══╩═
+                 0  1 </pre></div></div>
+</div>
+<p>Finally, we can plot the statistics:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">circuit</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0e076c666eb881f2f72421e22770464a869398a59228f1f2d4330214bd6cec91.png" src="../../_images/0e076c666eb881f2f72421e22770464a869398a59228f1f2d4330214bd6cec91.png" />
+</div>
+</div>
+<p>As we have seen before, 01 and 10 never appear.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="compilation">
+<h1>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline"></a></h1>
+<p>The circuit is the way to describe a quantum algorithm. It may also contain some arbitrary single or two-qubit unitary and controlled versions thereof. A quantum compiler should be able to decompose these into elementary gates.</p>
+<p>For instance, in Qiskit, you can get access to the general unitary using the <span class="math notranslate nohighlight">\(u3\)</span> gate</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+u3(\theta, \phi, \lambda) = \begin{pmatrix}
+\cos(\theta/2) &amp; -e^{i\lambda}\sin(\theta/2) \\
+e^{i\phi}\sin(\theta/2) &amp; e^{i\lambda+i\phi}\cos(\theta/2) 
+\end{pmatrix}.
+\end{split}\]</div>
+<p>The compiler decomposes it into an actual gate sequence.</p>
+<p>This is one task of a quantum compiler. The next one is to translate the gates given in the circuit to the gates implemented in the hardware or the simulator. In the table above, we defined many gates, but a well-chosen set of three is sufficient for universality. For engineering constraints, typically one minimal set of universal gates is implemented in the hardware. It depends on the physical architecture which three.</p>
+<p>At this point, the number of gates applied is probably already increasing: the decomposition of unitary will create many gates and the translation of gates is also likely to add more gates. An additional problem is the topology of the qubits: in some implementations not all qubit registers are connected to each other. The most popular implementation is superconducting qubits, which are manufactured on silicon chips just like any digital device you have. Since this is a quintessentially two dimensional layout, most qubits on the chip will not be connected. Here is an example topology of eight qubits on a superconducting quantum computer:</p>
+<img alt="8-qubit topology" src="qml/2_quantum_computations/figures/eight_qubits.svg" /><p>If we want to perform a two-qubit operations between two qubits that are not neighbouring, we have to perform SWAP operations to switch the qubit states between registers. A SWAP consists of three CNOT gates in a sequence.</p>
+<p>The total number of gates at the end of the compilation reflects the true requirement of the hardware. <em>Circuit depth</em> is the number of time steps required to execute the circuit, assuming that gates acting on distinct qubits can operate in parallel. On current and near-term quantum computers, we want circuits to be shallow, otherwise decoherence or other forms of noise destroy our calculations.</p>
+<p>We have to emphasize that the compilation depends on the backend. On the simulator, physical constraints do not apply. If we compile the circuit above, its depth will not increase:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.compiler</span> <span class="kn">import</span> <span class="n">assemble</span>
+<span class="n">compiled_circuit</span> <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+<span class="n">compiled_circuit</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()[</span><span class="s1">&#39;experiments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;instructions&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit.compiler</span> <span class="kn">import</span> <span class="n">assemble</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">compiled_circuit</span> <span class="o">=</span> <span class="n">assemble</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">compiled_circuit</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()[</span><span class="s1">&#39;experiments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;instructions&#39;</span><span class="p">]</span>
+
+<span class="ne">AttributeError</span>: &#39;QasmQobj&#39; object has no attribute &#39;as_dict&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h1>
+<p>[1] M. Fingerhuth, T. Babej, P. Wittek. (2018). <a class="reference external" href="https://doi.org/10.1371/journal.pone.0208561">Open source software in quantum computing</a>. <em>PLOS ONE</em> 13(12):e0208561.  <a id='1'></a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./qml/2_quantum_computations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="2_quantum_computations.html" class="btn btn-neutral float-left" title="Quantum Computations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="2_2_Adiabatic_Quantum_Computing_06_.html" class="btn btn-neutral float-right" title="Adiabatic Quantum Computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

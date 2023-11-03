@@ -1,0 +1,87 @@
+Traceback (most recent call last):
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Import necessary libraries
+import dash
+from dash import dcc, html
+from dash.dependencies import Input, Output
+import random
+
+# Initialize the app
+app = dash.Dash(__name__)
+
+# Define the app layout
+app.layout = html.Div([
+    html.Button('Flip Coin', id='flip-button', n_clicks=0),
+    html.Div(id='result-div')
+])
+
+# Define callback to update coin flip result
+@app.callback(
+    Output('result-div', 'children'),
+    [Input('flip-button', 'n_clicks')]
+)
+def update_result(n_clicks):
+    if n_clicks > 0:
+        coin_sides = ['Heads', 'Tails']
+        result = random.choice(coin_sides)
+        return f"The result is: {result}"
+    return "Press the button to flip the coin."
+
+# Run the app
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+------------------
+
+----- stdout -----
+Dash is running on http://127.0.0.1:8050/
+----- stdout -----
+ * Serving Flask app '__main__'
+----- stdout -----
+ * Debug mode: on
+----- stderr -----
+Traceback (most recent call last):
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/ipykernel_launcher.py", line 17, in <module>
+    app.launch_new_instance()
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/traitlets/config/application.py", line 1042, in launch_instance
+    app.initialize(argv)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/traitlets/config/application.py", line 113, in inner
+    return method(app, *args, **kwargs)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/ipykernel/kernelapp.py", line 678, in initialize
+    self.init_sockets()
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/ipykernel/kernelapp.py", line 317, in init_sockets
+    self.shell_port = self._bind_socket(self.shell_socket, self.shell_port)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/ipykernel/kernelapp.py", line 252, in _bind_socket
+    return self._try_bind_socket(s, port)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/ipykernel/kernelapp.py", line 228, in _try_bind_socket
+    s.bind("tcp://%s:%i" % (self.ip, port))
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/zmq/sugar/socket.py", line 302, in bind
+    super().bind(addr)
+  File "zmq/backend/cython/socket.pyx", line 564, in zmq.backend.cython.socket.Socket.bind
+  File "zmq/backend/cython/checkrc.pxd", line 28, in zmq.backend.cython.checkrc._check_rc
+zmq.error.ZMQError: Address already in use (addr='tcp://127.0.0.1:56945')
+----- stderr -----
+/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/IPython/core/interactiveshell.py:3516: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
+  warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
+------------------
+
+An exception has occurred, use %tb to see the full traceback.
+
+[0;31mSystemExit[0m[0;31m:[0m 1
+
+

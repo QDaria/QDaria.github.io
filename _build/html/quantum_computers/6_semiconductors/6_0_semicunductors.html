@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Semiconductor-based qubits &mdash; Daniel Mo Houshmand</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/exercise.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+    <link rel="canonical" href="https://qdaria.com/quantum_computers/6_semiconductors/6_0_semicunductors.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. Trapped Particles" href="../7_trapped/7_0_trapped.html" />
+    <link rel="prev" title="5.1. Quantum Annealing" href="../5_adiabatic_hybrid/5_1_quantum_annealing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/D62.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quantum Computers</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_QC/0_quantum_computers.html">1. Into the Hardware of Quantum Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_spin/1_0_spin.html">2. Spin-Based and Molecular Approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_superconducting/3_0_superconducting.html">3. Superconductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_topological_qubits/4_0_topological.html">4. Topological Qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_adiabatic_hybrid/5_0_adiabatic.html">5. Adiabatic Quantum Computers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Semiconductor-based qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_trapped/7_0_trapped.html">7. Trapped Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_photonic/8_0_photonic.html">8. Photonic and Optical Approaches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quantum Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/1_quantum_systems/1_quantum_systems.html">Quantum Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/2_quantum_computations/2_quantum_computations.html">Quantum Computations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms.html">Classical Quantum Hybrid Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/4_Coherent_Learning_Protocols/4_Coherent_Learning_Protocols.html">Coherent Learning Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qml/5_quantumkernels/5_quantumkernels.html">Quantum Kernels</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Semiconductor-based qubits</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/quantum_computers/6_semiconductors/6_0_semicunductors.md" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-lg docutils">
+<div class="sd-card-body docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-lg docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><img alt="D44" src="quantum_computers/6_semiconductors/_static/D44.png" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="semiconductor-based-qubits">
+<h1><span class="section-number">6. </span>Semiconductor-based qubits<a class="headerlink" href="#semiconductor-based-qubits" title="Permalink to this headline"></a></h1>
+<p>Semiconductor-based qubits leverage the well-established fabrication processes from the semiconductor industry, making them attractive for scalable quantum computation. Let’s delve into the details of each categor</p>
+<section id="quantum-dots">
+<h2><span class="section-number">6.1. </span>Quantum Dots<a class="headerlink" href="#quantum-dots" title="Permalink to this headline"></a></h2>
+<p>Quantum dots are nanoscale semiconductor structures that confine electrons in all three spatial dimensions, leading them to sometimes be termed “artificial atoms.”</p>
+<ol class="arabic simple">
+<li><p><strong>Formation of Quantum Dots:</strong> Quantum dots can be formed in a semiconductor material (like silicon or gallium arsenide) by applying voltages using gate electrodes. This confines electrons in a small region of space.</p></li>
+<li><p><strong>Spin Qubits:</strong>  The quantum information in quantum dots is often encoded in the spin of the electron, which can be in a superposition of its two possible states: “spin-up” and “spin-down.” External magnetic fields and microwave pulses can be used to initialize, manipulate, and read out the spin state.</p></li>
+<li><p><strong>Two-Qubit Operations:</strong> Interactions between neighboring quantum dots can be used to create two-qubit gates. For instance, the exchange interaction can mediate spin interactions between adjacent dots.</p></li>
+<li><p><strong>Advantages &amp; Challenges:</strong> Quantum dots leverage existing semiconductor technology, making them potentially scalable. However, ensuring long coherence times, especially in materials with a lot of nuclear spins, and achieving high-fidelity gates are challenges.</p></li>
+</ol>
+</section>
+<section id="silicon-qubits">
+<h2><span class="section-number">6.2. </span>Silicon Qubits<a class="headerlink" href="#silicon-qubits" title="Permalink to this headline"></a></h2>
+<p><strong>Silicon qubits</strong> are a subset of quantum dot qubits but focus specifically on silicon as the material of choice.</p>
+<ol class="arabic simple">
+<li><p><strong>Isotopically Pure Silicon:</strong> Natural silicon contains about 4.7% of the isotope silicon-29, which has a non-zero nuclear spin and can introduce noise into the qubit. Using isotopically enriched silicon-28 (which has zero nuclear spin) can significantly enhance the qubit’s coherence time.</p></li>
+<li><p><strong>Electron &amp; Nuclear Spins:</strong> Both the spin of the electron and the nuclear spin of a phosphorus donor atom in silicon can be used as qubits. Manipulation and readout are typically achieved using a combination of magnetic fields, microwave pulses, and RF pulses.</p></li>
+<li><p><strong>Advantages &amp; Challenges:</strong> Silicon has a mature fabrication industry, potentially making silicon qubits more scalable. The use of isotopically pure silicon can lead to very long coherence times. Challenges involve reliably creating and interfacing with individual donor atoms or quantum dots in silicon.</p></li>
+</ol>
+</section>
+<section id="aluminum-gallium-arsenide-algaas-qubits">
+<h2><span class="section-number">6.3. </span>Aluminum Gallium Arsenide (AlGaAs) Qubits<a class="headerlink" href="#aluminum-gallium-arsenide-algaas-qubits" title="Permalink to this headline"></a></h2>
+<p><strong>AlGaAs qubits</strong> are also a subset of quantum dot qubits, but they use a different semiconductor material than silicon.</p>
+<ol class="arabic simple">
+<li><p><strong>Formation of Quantum Dots in AlGaAs:</strong> Quantum dots in AlGaAs are typically formed at the interface between AlGaAs and another semiconductor, gallium arsenide (GaAs). This heterostructure can confine electrons at the interface.</p></li>
+<li><p><strong>Manipulating Electron Spins:</strong> Similar to other quantum dots, qubits in AlGaAs are often based on the spin of the confined electron. Initialization, manipulation, and readout mechanisms are similar to those in silicon quantum dots.</p></li>
+<li><p><strong>Advantages &amp; Challenges:</strong> AlGaAs/GaAs heterostructures have a long history in semiconductor physics, particularly in the study of two-dimensional electron gases and the fractional quantum Hall effect. They can have good electron mobility and potentially long coherence times. However, as with other quantum dot systems, achieving high-fidelity gates and ensuring long coherence times in the presence of nuclear spins are challenges.</p></li>
+</ol>
+<p>In all these semiconductor-based systems, the goal is to harness the precision and scalability of semiconductor fabrication processes to build reliable and large-scale quantum computers. While they share many of the same challenges as other qubit technologies (like decoherence and gate fidelity), their compatibility with existing technology platforms offers a promising path forward.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./quantum_computers/6_semiconductors"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../5_adiabatic_hybrid/5_1_quantum_annealing.html" class="btn btn-neutral float-left" title="5.1. Quantum Annealing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../7_trapped/7_0_trapped.html" class="btn btn-neutral float-right" title="7. Trapped Particles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,8 +1,12 @@
 # Book settings
 title: Mo Houshmand
 author: Daniel Mo Houshmand
-logo: _static/QDaria_logo.png
+#logo: _static/QDaria_logo.png
 #logo: _static/qd_logo.png
+#logo: _static/qdl_ren0.png
+#logo: _static/octt.png
+#logo: _static/QD0.png
+logo: _static/D62.png
 only_build_toc_files: true
 
 # Execution settings
@@ -41,20 +45,21 @@ extensions:
 # HTML-specific settings
 html:
   use_issues_button: True
-  use_repository_button: True
-  use_multitoc_numbering: True
-  use_edit_page_button: True
+  use_repository_button: true
+  #use_multitoc_numbering: true
+  use_edit_page_button: true
   style_nav_header_background: #0538f5
   search_bar_text: Search this book...
   extra_navbar: Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
   home_page_in_navbar: True
   extra_footer: ''
-  collapse_navigation: #add-a-link-to-your-repositoryxsx
-  sticky_navigation: True
+  collapse_navigation: true 
+  sticky_navigation: true
   navigation_depth: 5
-  includehidden: True
-  titles_only: True
+  #includehidden: true
+  #titles_only: true
   baseurl: "https://qdaria.com"
+  google_analytics_id: G-DQ99N0ZN8J
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -84,7 +89,7 @@ sphinx:
   - myst_nb
   - sphinx_copybutton
   - sphinx_design
-
+  - sphinx_exercise
   config:
     html_theme: sphinx_rtd_theme
     html_js_files:

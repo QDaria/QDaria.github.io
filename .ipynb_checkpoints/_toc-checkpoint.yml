@@ -1,0 +1,29 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+#chapters:
+#- file: markdown
+#- file: notebooks
+#- file: markdown-notebooks
+
+parts:
+  - caption: Explore Quantum Computers Interactively
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    #- file: intro
+    - file: qc_demo
+  - caption: Financial - Throwing a coin in the the air
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    #- file: intro
+    - file: finance  
+  - caption: Quantum Machine Learning
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    - file: qml  
+  - caption: A Rough Business Plan
+    #numbered: True  # Only applies to chapters in Part 1.
+    chapters:  
+    - file: bp  
