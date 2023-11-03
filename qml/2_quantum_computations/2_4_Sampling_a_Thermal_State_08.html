@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sampling a Thermal State &mdash; Daniel Mo Houshmand</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/exercise.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/QDaria.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mo_addmination.css" type="text/css" />
+    <link rel="canonical" href="https://qdaria.com/qml/2_quantum_computations/2_4_Sampling_a_Thermal_State_08.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../../_static/sphinx-thebe.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Classical Quantum Hybrid Learning Algorithms" href="../3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms.html" />
+    <link rel="prev" title="Quantum Approximate Optimization Algorithm" href="2_3_Quantum_Computation_Variational_Circuits_07.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/D62.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quantum Computers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/0_QC/0_quantum_computers.html">1. Into the Hardware of Quantum Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/1_spin/1_0_spin.html">2. Spin-Based and Molecular Approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/3_superconducting/3_0_superconducting.html">3. Superconductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/4_topological_qubits/4_0_topological.html">4. Topological Qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/5_adiabatic_hybrid/5_0_adiabatic.html">5. Adiabatic Quantum Computers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/6_semiconductors/6_0_semicunductors.html">6. Semiconductor-based qubits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/7_trapped/7_0_trapped.html">7. Trapped Particles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum_computers/8_photonic/8_0_photonic.html">8. Photonic and Optical Approaches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quantum Machine Learning</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_quantum_systems/1_quantum_systems.html">Quantum Systems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="2_quantum_computations.html">Quantum Computations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html">Gate-Model Quantum Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#quantum-approximate-optimization-algorithm">Quantum Approximate Optimization Algorithm.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#solovay-kitaev-theorem">Solovay-Kitaev theorem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#quantum-circuits">Quantum Circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#hadamard-gate">Hadamard gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#the-cnot-gate">The CNOT gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#defining-circuits">Defining circuits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#compilation">Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_1_Gate_Model_Quantum_Computing_05_.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html">Adiabatic Quantum Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#adiabatic-theorem">Adiabatic Theorem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#unitary-evolution-and-the-hamiltonian">Unitary evolution and the Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#the-adiabatic-theorem-and-adiabatic-quantum-computing">The adiabatic theorem and adiabatic quantum computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#quantum-annealing">Quantum Annealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#chimera-graph">Chimera Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#id1">Quantum annealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#implementations">Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#superconducting-architectures">Superconducting Architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#dissadvantages">Dissadvantages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#trapped-ions">Trapped ions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_2_Adiabatic_Quantum_Computing_06_.html#photonic-systems">Photonic Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_3_Quantum_Computation_Variational_Circuits_07.html">Quantum Approximate Optimization Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_3_Quantum_Computation_Variational_Circuits_07.html#id1">Quantum approximate optimization algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_3_Quantum_Computation_Variational_Circuits_07.html#analysis-of-the-results">Analysis of the results</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sampling a Thermal State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recap">Recap:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#algorithm">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-annealing">Quantum annealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-approximate-thermalization">Quantum Approximate Thermalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#high-temperature">High temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#low-temperature">Low temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms.html">Classical Quantum Hybrid Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Coherent_Learning_Protocols/4_Coherent_Learning_Protocols.html">Coherent Learning Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_quantumkernels/5_quantumkernels.html">Quantum Kernels</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="2_quantum_computations.html">Quantum Computations</a></li>
+      <li class="breadcrumb-item active">Sampling a Thermal State</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/qml/2_quantum_computations/2_4_Sampling_a_Thermal_State_08.ipynb" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="sampling-a-thermal-state">
+<h1>Sampling a Thermal State<a class="headerlink" href="#sampling-a-thermal-state" title="Permalink to this headline"></a></h1>
+<p>We talked about variation of circuits, which are quantum algorithms designed for imperfect quantum computers. We can also take it one level further and just accept imperfection and accept that, when you have a system– say, a quantum annealer– then it interacts with the environment, and, if you let this equilibriation happen, then we know at the end of it we are going to end up in the thermal state. So the thermal state is in this thermal equilibrium with the environment. So the environment has a temperature, and this system attains the same temperature. And if we pull out samples from this thermal state, and they follow a specified distribution, they follow Boltzmann distribution.</p>
+<div class="math notranslate nohighlight">
+\[H=-\sum_{&lt;i,j&gt;}J_{ij}\sigma_{i}^{z}\sigma_{j}^{z}+\sum_{i}h_{i}\sigma_{i}^{z}\]</div>
+<div class="math notranslate nohighlight">
+\[P(E_{i})=\frac{e^{\frac{-E_{i}}{T}}}{2}\]</div>
+<p>So this is critical, because every time when you face the problem of pulling out samples of a Boltzmann distribution. In machine learning, you can just plug in this idea of annealing to sample the thermal state. The only difficulty is that this temperature is not what you read out in a thermometer in your dilution refrigerator that cools down your superconducting system. It’s an effective temperature which comes also from the noise and other factors that surround the quantum processing unit. So this has to be estimated. But, once you do that, you can use this as an algorithmic primitive. You are not restricted to a quantum annealer. You can actually do something very similar by using a gate model quantum computer. So the is called quantum approximate thermalization.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recap">
+<h1>Recap:<a class="headerlink" href="#recap" title="Permalink to this headline"></a></h1>
+<div class="math notranslate nohighlight">
+\[\phi^{\dagger'}=\frac{1}{\sqrt{2}}(\mid00\rangle+\mid11\rangle)\]</div>
+<div class="math notranslate nohighlight">
+\[Tr|\psi^{\dagger}\rangle\langle\psi^{\dagger}\mid=\frac{I}{2}\]</div>
+<p>To get the idea, just go back to the first module, in one of the videos we talked about, that if you take the maximally entangled state and we modulize over one of the subsystems– it doesn’t matter which subsystem– in other words, we take the partial trace in one of the subsystems– then we end up with the maximally mixed state. Now, the maximally mixed state is just the thermal state at infinite temperature. So that can think– can take this idea further and have some larger system, trace it out, and get the thermal state? And that’s exactly what you are doing. So you create some easy system– for instance, the sigma x Hamiltonian acting on each site–</p>
+<div class="math notranslate nohighlight">
+\[H_{0}=\sum_{i}\sigma^{x}\]</div>
+<p>and you take an ancilla in the same number of qubits as the number of qubits you have here, and if you start, for instance, with just one qubit for the sigma-x interaction and one qubit for the ancilla, then you can take this state– which looks remarkably like the maximally entangled state. So now you have the plus state. The plus state is just the equal superposition of 0 and 1.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="algorithm">
+<h1>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline"></a></h1>
+<ol class="arabic simple">
+<li><p>Take an easy system with an ancilla. Trace out the ancilla –&gt; thermal state. <span class="math notranslate nohighlight">\(\mid\psi\rangle=\frac{1}{\sqrt{2}}\left(e^{-\frac{1}{2T}}\mid+\rangle\mid+\rangle+e^{-\frac{1}{2T}}\mid-\rangle\mid-\rangle\right)\)</span></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[Tr\mid\psi\rangle\langle\psi\mid=\frac{e^{\frac{-E_{i}}{T}}}{2}=\rho_{0}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>QUAO to approximation <span class="math notranslate nohighlight">\(\rho\)</span></p></li>
+</ol>
+<p>And the minus state is the same thing, with the minus sign here. So we can just write it this way. So it looks almost identical to the maximally entangled state, with the extra difference that you have these coefficients <span class="math notranslate nohighlight">\(e^{\frac{-E_{i}}{T}}\)</span>in front of the individual terms– and some normalization factor. Now, if you– this is the ancilla system <span class="math notranslate nohighlight">\(e^{-\frac{1}{2T}}\mid-\rangle\mid-\rangle\)</span>. And this <span class="math notranslate nohighlight">\(\mid+\rangle+e^{-\frac{1}{2T}}\mid-\rangle\)</span> is your actual system that you are interested in. Now, if you trace out the ancilla system, what you are getting is exactly the thermal state <span class="math notranslate nohighlight">\(\frac{e^{\frac{-E_{i}}{T}}}{2}\)</span> of this Hamiltonian <span class="math notranslate nohighlight">\(H_{0}=\sum_{i}\sigma^{x}\)</span>. So this was easy to prepare. And it’s just the same idea as we did here. And now we can use, as a second step, the quantum approximate optimization algorithm, to go from here, from this rho 0 thermal state, which is in equilibrium with the environment, to the thermal state of a system of interest– for instance, the Ising model. And the QAOA approximates a unitary evolution. In other words, it’s not going to change the thermal equilibrium. So we will always stay close to the thermal equilibrium. So, once you finish optimizing over this parametric circuit, you will be able to read out an approximate thermal state of the system of interest.</p>
+<p>• The ground state has zero probability in the thermal state. False</p>
+<p>• A superconducting quantum annealer works at a finite temperature instead of absolute zero. True</p>
+<p>• What are the two main ideas that going into the gate-model variational algorithm called quantum approximate thermalization?</p>
+<p>– Tracing out part of an entangled state yields a mixed state.</p>
+<p>– QAOA stays close to the starting eigenstate of a system.</p>
+<p>In the previous notebook, we showed how QAOA can approximate the ground state <span class="math notranslate nohighlight">\(|\psi_0\rangle\)</span> of a many-body system characterized by a Hamiltonian <span class="math notranslate nohighlight">\(H\)</span>. We connected this problem to binary optimization in computer science in notebook 4, and used this connection to understand adiabatic quantum computing and variational algorithms.</p>
+<p>However, we also talked about the engineering constraints we face in real devices: the evolution in these devices is actually that of an open quantum system, where the quantum processing unit interacts with the environment. In that case, the ground state of <span class="math notranslate nohighlight">\(H\)</span> won’t be a pure state <span class="math notranslate nohighlight">\(|\psi_0\rangle\)</span> but a density matrix <span class="math notranslate nohighlight">\(\rho_0\)</span></p>
+<img alt="A quantum processor as an open quantum system" src="qml/2_quantum_computations/figures/open_system.svg" /><p>The environment is defined by a temperature <span class="math notranslate nohighlight">\(T\)</span>, and if we let the system equilibrate, the QPU will become thermalized at temperature <span class="math notranslate nohighlight">\(T\)</span>. As we saw in the notebook on evolution in open and closed systems, the energy of the states will follow a Boltzmann distribution: <span class="math notranslate nohighlight">\(\rho_0=\frac{1}{Z} e^{-H/T}\)</span> where <span class="math notranslate nohighlight">\(Z=tr (e^{-H/T})\)</span> is a normalization factor (called the <em>partition function</em>), ensuring that <span class="math notranslate nohighlight">\(tr(\rho_0)=1\)</span>. The inverse temperature <span class="math notranslate nohighlight">\(1/T\)</span> is often denoted by <span class="math notranslate nohighlight">\(\beta\)</span>, so the state can also be written as <span class="math notranslate nohighlight">\(\rho_0=\frac{1}{Z} e^{-\beta H}\)</span>. If <span class="math notranslate nohighlight">\(H\)</span> has a discrete basis of orthonormal eigenstates <span class="math notranslate nohighlight">\(\{|n\rangle\}\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\{E_n\}\)</span>, we can write <span class="math notranslate nohighlight">\(H=\sum_n E_n |n\rangle \langle n|\)</span> and <span class="math notranslate nohighlight">\(\rho_0=\frac{1}{Z} \sum_n e^{-E_n/T} |n\rangle \langle n|\)</span> (since exponentiating a diagonal operator consists in exponentiating the elements of the diagonal). Hence, the thermal density matrix is a mixed state where each eigenstate of <span class="math notranslate nohighlight">\(H\)</span> with energy <span class="math notranslate nohighlight">\(E\)</span> has a classical probability <span class="math notranslate nohighlight">\(P(E)=\frac{1}{Z} e^{-E/T}\)</span>, a Boltzmann distribution. We can see that the minimum energy eigenstate will have the highest probability. When <span class="math notranslate nohighlight">\(T \rightarrow 0\)</span>, the minimum energy eigenstate will have a probability close to <span class="math notranslate nohighlight">\(1\)</span>. When <span class="math notranslate nohighlight">\(T \rightarrow \infty\)</span>, all the eigenstates tend to have equal probability.</p>
+<p>The question that arises now is: how to approximate this thermalized state <span class="math notranslate nohighlight">\(\rho_0\)</span> of the Hamiltonian <span class="math notranslate nohighlight">\(H\)</span> using a quantum circuit? For pure ground states, there were two methods: quantum annealing and QAOA. We will see here that those two methods can be adjusted to also prepare thermalized density matrices.</p>
+<p>We will see later that we can use this preparation to train certain machine learning models.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="quantum-annealing">
+<h1>Quantum annealing<a class="headerlink" href="#quantum-annealing" title="Permalink to this headline"></a></h1>
+<p>Let us start by importing a handful of packages:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dimod</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">dimod</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;dimod&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are interested in the thermal state of the classical Ising model. We create a random model over ten spins and we will sample a hundred states.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_spins</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_spins</span><span class="p">)}</span>
+<span class="n">J</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">.05</span><span class="p">:</span>
+        <span class="n">J</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">dimod</span><span class="o">.</span><span class="n">BinaryQuadraticModel</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dimod</span><span class="o">.</span><span class="n">SPIN</span><span class="p">)</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">dimod</span><span class="o">.</span><span class="n">SimulatedAnnealingSampler</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s sample the energies at different temperatures. The <code class="docutils literal notranslate"><span class="pre">dimod</span></code> implementation of simulated annealing allows us to set an initial and final temperature for the annealing. If we set it to the same value, we mimic the effect of a finite temperature and we will have a wider range of configurations and energy levels in the samples. The next cell can take a while to execute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">beta_range</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">temperature_0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">temperature_0</span><span class="p">],</span> <span class="n">num_reads</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">energies_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="o">.</span><span class="n">energy</span> <span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">()]</span>
+<span class="n">temperature_1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">beta_range</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">temperature_1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">temperature_1</span><span class="p">],</span> <span class="n">num_reads</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">energies_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="o">.</span><span class="n">energy</span> <span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">()]</span>
+<span class="n">temperature_2</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">beta_range</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">temperature_2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">temperature_2</span><span class="p">],</span> <span class="n">num_reads</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">energies_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="o">.</span><span class="n">energy</span> <span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We define a function to plot the resulting probability distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_probabilities</span><span class="p">(</span><span class="n">energy_samples</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">energies</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">energy_samples</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">)):</span>
+        <span class="n">probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">energies</span><span class="p">))</span><span class="o">/</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">probabilities</span> <span class="o">/=</span> <span class="n">Z</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">energies</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$T_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;$&quot;</span><span class="p">)</span>
+    <span class="n">minimum_energy</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">energies</span><span class="p">)</span> <span class="k">for</span> <span class="n">energies</span> <span class="ow">in</span> <span class="n">energy_samples</span><span class="p">])</span>
+    <span class="n">maximum_energy</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">energies</span><span class="p">)</span> <span class="k">for</span> <span class="n">energies</span> <span class="ow">in</span> <span class="n">energy_samples</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">minimum_energy</span><span class="p">,</span> <span class="n">maximum_energy</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Energy&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_probabilities</span><span class="p">([</span><span class="n">energies_0</span><span class="p">,</span> <span class="n">energies_1</span><span class="p">,</span> <span class="n">energies_2</span><span class="p">],</span> 
+                   <span class="p">[</span><span class="n">temperature_0</span><span class="p">,</span> <span class="n">temperature_1</span><span class="p">,</span> <span class="n">temperature_2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1f4cf8530a2302e53d98e645ca007c8fefcae9bbd9f36be15cfbef334af06c3c.png" src="../../_images/1f4cf8530a2302e53d98e645ca007c8fefcae9bbd9f36be15cfbef334af06c3c.png" />
+</div>
+</div>
+<p>Just as we saw in the introduction, the distribution flattens out at a high temperature (<span class="math notranslate nohighlight">\(T_3\)</span>). On the other hand, the energy is peaked for a low temperature, and we do not even have samples for high-energy states.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="quantum-approximate-thermalization">
+<h1>Quantum Approximate Thermalization<a class="headerlink" href="#quantum-approximate-thermalization" title="Permalink to this headline"></a></h1>
+<p>There are many results for preparing a thermal state on a gate-model quantum computer, but most of them need a large-scale device. More recently, a protocol for approximating thermalization was developed using shallow circuits [<span class="xref myst">1</span>]. The idea is that if we knew that the thermal state was a pure state <span class="math notranslate nohighlight">\(\psi\)</span> (which means <span class="math notranslate nohighlight">\(\rho=|\psi \rangle \langle \psi |\)</span>), we could apply QAOA to get to the thermal state of a target Hamiltonian. Since QAOA approximates the adiabatic pathway, it should be a conservative change, so at the end of it, we would be close to the thermal state of the target Hamiltonian.</p>
+<p>To find the thermal state of the simple system, the trick is to purify <span class="math notranslate nohighlight">\(\rho\)</span> on a larger Hilbert space. If we call <span class="math notranslate nohighlight">\(\mathcal{H_1}\)</span> our current Hilbert space, purifying a density matrix <span class="math notranslate nohighlight">\(\rho\)</span> consists of finding a second Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H_2}\)</span> such that there exists <span class="math notranslate nohighlight">\(| \psi \rangle \in \mathcal{H_1} \otimes \mathcal{H_2}\)</span> such that <span class="math notranslate nohighlight">\(\rho = \textrm{Tr}_{\mathcal{H_2}} \left( |\psi \rangle \langle \psi | \right)\)</span>, where <span class="math notranslate nohighlight">\(\textrm{Tr}_{\mathcal{H_2}}\)</span> is the partial trace taken over the second Hilbert space – in essence, we are marginalizing the probability distribution. This resembles the idea of what we shown in the notebook on measurements and mixed states: if we trace out a subsystem of the maximally entangled state <span class="math notranslate nohighlight">\(|\phi^+\rangle\)</span>, we get the maximally mixed state. The maximally mixed state is essentially a thermal state at infinite temperature.</p>
+<p>It can be shown that <span class="math notranslate nohighlight">\(| \psi \rangle =1/\sqrt{2 \cosh \frac{1}{2T}} \sum_{z \in {-1,1}} e^{- \frac{z}{2T}} |z \rangle_{\mathcal{H_1}} \otimes | z \rangle_{\mathcal{H_2}}\)</span> purifies <span class="math notranslate nohighlight">\(\rho=\frac{1}{Z}e^{- H_m/T}\)</span> [<span class="xref myst">1</span>], where <span class="math notranslate nohighlight">\(H_m\)</span> is the mixing Hamiltonian in QAOA. This state can be built with a circuit composed uniquely of RX gates and CNOT gates</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span><span class="p">,</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">BasicAer</span> <span class="k">as</span> <span class="n">Aer</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">execute</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Pauli</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="kn">import</span> <span class="n">get_aer_backend</span><span class="p">,</span> <span class="n">QuantumInstance</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operator</span> <span class="kn">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.components.optimizers</span> <span class="kn">import</span> <span class="n">COBYLA</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.algorithms</span> <span class="kn">import</span> <span class="n">QAOA</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.components.initial_states.custom</span> <span class="kn">import</span> <span class="n">Custom</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="high-temperature">
+<h1>High temperature<a class="headerlink" href="#high-temperature" title="Permalink to this headline"></a></h1>
+<p>We create an example system of two qubits that needs two extra qubits for purification. In this first example, we set <span class="math notranslate nohighlight">\(T=1000\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_qubits</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n_system</span> <span class="o">=</span> <span class="n">n_qubits</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We define a simple Ising model with a weight matrix and set <span class="math notranslate nohighlight">\(p=1\)</span> in QAOA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Based on these parameters, we define the Ising Hamiltonian <span class="math notranslate nohighlight">\(H=\sum W_{ij} \sigma_i\sigma_j\)</span> (for the weight matrix defined above, <span class="math notranslate nohighlight">\(H=\sigma_1 \sigma_2\)</span>, whose minimum is reached when <span class="math notranslate nohighlight">\(\sigma_1 \neq \sigma_2\)</span>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pauli_z</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">coeff</span><span class="p">):</span>
+    <span class="n">eye</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">((</span><span class="n">n_system</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Operator</span><span class="p">([[</span><span class="n">coeff</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="n">qubit</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_system</span><span class="p">))]])</span>
+
+<span class="k">def</span> <span class="nf">product_pauli_z</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">coeff</span><span class="p">):</span>
+    <span class="n">eye</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">((</span><span class="n">n_system</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Operator</span><span class="p">([[</span><span class="n">coeff</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="n">q1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_system</span><span class="p">))</span> <span class="o">*</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="n">q2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_system</span><span class="p">))]])</span>
+
+<span class="k">def</span> <span class="nf">ising_hamiltonian</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">product_pauli_z</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
+             <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">))])</span>
+    <span class="n">H</span><span class="o">.</span><span class="n">to_matrix</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">H</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Hc</span> <span class="o">=</span> <span class="n">ising_hamiltonian</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We prepare the intial state <span class="math notranslate nohighlight">\(|\psi_0 \rangle = 1/\sqrt{2 cosh(\frac{1}{2T})} \sum_{z \in {1, -1}} e^{- z/T} | z \rangle_S \otimes | z \rangle_E\)</span>, with <span class="math notranslate nohighlight">\(E\)</span> a temporary space used for purification purpose. It can be shown that tracing out this state over <span class="math notranslate nohighlight">\(E\)</span> reproduces the state <span class="math notranslate nohighlight">\(\rho \propto e^{-H_m/T} \)</span>. We initialize the circuit first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n_system</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we prepare the state:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prepare_init_state</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">init_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+    <span class="n">α</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
+        <span class="n">init_circuit</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">n_qubits</span><span class="o">+</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">init_circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="n">n_qubits</span><span class="o">+</span><span class="n">i</span><span class="p">],</span> <span class="n">qr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">init_state</span> <span class="o">=</span> <span class="n">Custom</span><span class="p">(</span><span class="n">n_system</span><span class="p">,</span> <span class="n">circuit</span><span class="o">=</span><span class="n">init_circuit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">init_state</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now use the QAOA implementation of Qiskit Aqua, with the above initial circuit appended to the regular variational circuit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_thermal_state</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin QAOA...&quot;</span><span class="p">)</span>
+    
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">COBYLA</span><span class="p">()</span>
+    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">prepare_init_state</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">qaoa</span> <span class="o">=</span> <span class="n">QAOA</span><span class="p">(</span><span class="n">Hc</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">)</span>
+    <span class="n">backend</span> <span class="o">=</span> <span class="n">get_aer_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
+    <span class="n">quantum_instance</span> <span class="o">=</span> <span class="n">QuantumInstance</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">qaoa</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">quantum_instance</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results of QAOA&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">qaoa</span><span class="o">.</span><span class="n">get_optimal_cost</span><span class="p">(),</span> <span class="n">qaoa</span><span class="o">.</span><span class="n">get_optimal_circuit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We run the protocol to get the thermal state:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span><span class="p">,</span> <span class="n">thermal_state</span> <span class="o">=</span> <span class="n">get_thermal_state</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result of QAOA&quot;</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Begin QAOA...
+Results of QAOA {&#39;num_optimizer_evals&#39;: 58, &#39;min_val&#39;: -0.0009999995512849913, &#39;opt_params&#39;: array([ 0.352, -0.079, -0.65 ,  1.049]), &#39;eval_time&#39;: 20.307998657226562, &#39;eval_count&#39;: 58, &#39;energy&#39;: -0.0009999995512849913, &#39;eigvals&#39;: array([-0.001]), &#39;min_vector&#39;: array([ 0.384-0.042j,  0.1  +0.146j,  0.1  +0.146j, -0.061+0.187j,
+        0.161+0.073j, -0.027-0.385j, -0.173+0.093j,  0.161+0.073j,
+        0.161+0.073j, -0.173+0.093j, -0.027-0.385j,  0.161+0.073j,
+       -0.061+0.187j,  0.1  +0.146j,  0.1  +0.146j,  0.384-0.042j]), &#39;eigvecs&#39;: array([[ 0.384-0.042j,  0.1  +0.146j,  0.1  +0.146j, -0.061+0.187j,
+         0.161+0.073j, -0.027-0.385j, -0.173+0.093j,  0.161+0.073j,
+         0.161+0.073j, -0.173+0.093j, -0.027-0.385j,  0.161+0.073j,
+        -0.061+0.187j,  0.1  +0.146j,  0.1  +0.146j,  0.384-0.042j]])}
+Result of QAOA -0.0009999995512849913
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we reformat the final results, measure out the result, and plot the energy distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_energy</span><span class="p">(</span><span class="n">spin_configuration</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">spin_configuration</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([[</span><span class="o">-</span><span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">)])</span>
+
+<span class="k">def</span> <span class="nf">get_energy_distribution</span><span class="p">(</span><span class="n">thermal_state</span><span class="p">):</span>
+    <span class="n">thermal_state</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
+        <span class="n">thermal_state</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">thermal_state</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">thermal_state</span><span class="p">)</span>
+    
+    <span class="n">list_spin_configs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="nb">list</span><span class="p">(</span><span class="n">spin_config</span><span class="p">)]</span> <span class="o">*</span> <span class="n">results</span><span class="p">[</span><span class="n">spin_config</span><span class="p">]</span> <span class="k">for</span> <span class="n">spin_config</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+    <span class="n">list_spin_configs</span><span class="p">[</span><span class="n">list_spin_configs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">list_energy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_energy</span><span class="p">(</span><span class="n">spin_config</span><span class="p">)</span> <span class="k">for</span> <span class="n">spin_config</span> <span class="ow">in</span> <span class="n">list_spin_configs</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">list_energy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_energy</span> <span class="o">=</span> <span class="n">get_energy_distribution</span><span class="p">(</span><span class="n">thermal_state</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">list_energy</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bcab99063c23799d23c0d33fd8a159f55ba70410e1d645064fcd213ff05d402b.png" src="../../_images/bcab99063c23799d23c0d33fd8a159f55ba70410e1d645064fcd213ff05d402b.png" />
+</div>
+</div>
+<p>The two eigenvalues, i.e. possible energies, of our Hamiltonian <span class="math notranslate nohighlight">\(H=\sigma_1 \sigma_2\)</span> are <span class="math notranslate nohighlight">\(E=-1\)</span> and <span class="math notranslate nohighlight">\(E=1\)</span>. At infinite temperature (<span class="math notranslate nohighlight">\(\beta=0\)</span>), they should be assigned an equal probability, which is the case in the histogram above. Let’s repeat the experiment at a lower temperature.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="low-temperature">
+<h1>Low temperature<a class="headerlink" href="#low-temperature" title="Permalink to this headline"></a></h1>
+<p>We set <span class="math notranslate nohighlight">\(T=0.5\)</span>. With this, we should get the lowest energy with a high probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span><span class="p">,</span> <span class="n">thermal_state</span> <span class="o">=</span> <span class="n">get_thermal_state</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">list_energy</span> <span class="o">=</span> <span class="n">get_energy_distribution</span><span class="p">(</span><span class="n">thermal_state</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">list_energy</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Begin QAOA...
+Results of QAOA {&#39;num_optimizer_evals&#39;: 80, &#39;min_val&#39;: -0.9640274055928333, &#39;opt_params&#39;: array([ 1.192, -0.014,  0.785,  0.006]), &#39;eval_time&#39;: 27.96871829032898, &#39;eval_count&#39;: 80, &#39;energy&#39;: -0.9640274055928333, &#39;eigvals&#39;: array([-0.964]), &#39;min_vector&#39;: array([ 0.179-0.245j, -0.004+0.005j, -0.004+0.005j,  0.312-0.246j,
+        0.245-0.246j,  0.005+0.062j,  0.004-0.071j,  0.245-0.246j,
+        0.245-0.246j,  0.004-0.071j,  0.005+0.062j,  0.245-0.246j,
+        0.312-0.246j, -0.004+0.005j, -0.004+0.005j,  0.179-0.245j]), &#39;eigvecs&#39;: array([[ 0.179-0.245j, -0.004+0.005j, -0.004+0.005j,  0.312-0.246j,
+         0.245-0.246j,  0.005+0.062j,  0.004-0.071j,  0.245-0.246j,
+         0.245-0.246j,  0.004-0.071j,  0.005+0.062j,  0.245-0.246j,
+         0.312-0.246j, -0.004+0.005j, -0.004+0.005j,  0.179-0.245j]])}
+</pre></div>
+</div>
+<img alt="../../_images/67749569e32967c2f6a0a27bedbb60db48a7f76e2e4abaf4670b18f930995bc0.png" src="../../_images/67749569e32967c2f6a0a27bedbb60db48a7f76e2e4abaf4670b18f930995bc0.png" />
+</div>
+</div>
+<p>The minimum energy eigenstate should now have a much higher probability. Try to repeat the experiment with different <span class="math notranslate nohighlight">\(\beta\)</span> to see the effect of the temperature on the prepared thermal state.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h1>
+<p>[1] Verdon, G., Broughton, M., Biamonte, J. (2017) <a class="reference external" href="https://arxiv.org/abs/1712.05304">A quantum algorithm to train neural networks using low-depth circuits</a>. <em>arXiv:1712.05304</em>. <a id='1'></a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./qml/2_quantum_computations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="2_3_Quantum_Computation_Variational_Circuits_07.html" class="btn btn-neutral float-left" title="Quantum Approximate Optimization Algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../3_Classical_Quantum_Hybrid_Learning_Algorithms/3_Classical_Quantum_Hybrid_Learning_Algorithms.html" class="btn btn-neutral float-right" title="Classical Quantum Hybrid Learning Algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

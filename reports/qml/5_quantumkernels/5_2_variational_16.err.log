@@ -1,0 +1,75 @@
+Traceback (most recent call last):
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+dev = qml.device('default.qubit', wires=2)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mVersionConflict[0m                           Traceback (most recent call last)
+Cell [0;32mIn[4], line 1[0m
+[0;32m----> 1[0m dev [38;5;241m=[39m [43mqml[49m[38;5;241;43m.[39;49m[43mdevice[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mdefault.qubit[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mwires[49m[38;5;241;43m=[39;49m[38;5;241;43m2[39;49m[43m)[49m
+
+File [0;32m~/micromamba/envs/mom1env/lib/python3.8/site-packages/pennylane/__init__.py:336[0m, in [0;36mdevice[0;34m(name, *args, **kwargs)[0m
+[1;32m    333[0m options[38;5;241m.[39mupdate(kwargs)
+[1;32m    335[0m [38;5;66;03m# loads the device class[39;00m
+[0;32m--> 336[0m plugin_device_class [38;5;241m=[39m [43mplugin_devices[49m[43m[[49m[43mname[49m[43m][49m[38;5;241;43m.[39;49m[43mload[49m[43m([49m[43m)[49m
+[1;32m    338[0m [38;5;28;01mif[39;00m Version(version()) [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m SimpleSpec(plugin_device_class[38;5;241m.[39mpennylane_requires):
+[1;32m    339[0m     [38;5;28;01mraise[39;00m DeviceError(
+[1;32m    340[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mThe [39m[38;5;132;01m{[39;00mname[38;5;132;01m}[39;00m[38;5;124m plugin requires PennyLane versions [39m[38;5;132;01m{[39;00mplugin_device_class[38;5;241m.[39mpennylane_requires[38;5;132;01m}[39;00m[38;5;124m, [39m[38;5;124m"[39m
+[1;32m    341[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mhowever PennyLane version [39m[38;5;132;01m{[39;00m__version__[38;5;132;01m}[39;00m[38;5;124m is installed.[39m[38;5;124m"[39m
+[1;32m    342[0m     )
+
+File [0;32m~/micromamba/envs/mom1env/lib/python3.8/site-packages/pkg_resources/__init__.py:2517[0m, in [0;36mEntryPoint.load[0;34m(self, require, *args, **kwargs)[0m
+[1;32m   2510[0m     warnings[38;5;241m.[39mwarn(
+[1;32m   2511[0m         [38;5;124m"[39m[38;5;124mParameters to load are deprecated.  Call .resolve and [39m[38;5;124m"[39m
+[1;32m   2512[0m         [38;5;124m"[39m[38;5;124m.require separately.[39m[38;5;124m"[39m,
+[1;32m   2513[0m         PkgResourcesDeprecationWarning,
+[1;32m   2514[0m         stacklevel[38;5;241m=[39m[38;5;241m2[39m,
+[1;32m   2515[0m     )
+[1;32m   2516[0m [38;5;28;01mif[39;00m require:
+[0;32m-> 2517[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mrequire[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   2518[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mresolve()
+
+File [0;32m~/micromamba/envs/mom1env/lib/python3.8/site-packages/pkg_resources/__init__.py:2540[0m, in [0;36mEntryPoint.require[0;34m(self, env, installer)[0m
+[1;32m   2534[0m [38;5;66;03m# Get the requirements for this entry point with all its extras and[39;00m
+[1;32m   2535[0m [38;5;66;03m# then resolve them. We have to pass `extras` along when resolving so[39;00m
+[1;32m   2536[0m [38;5;66;03m# that the working set knows what extras we want. Otherwise, for[39;00m
+[1;32m   2537[0m [38;5;66;03m# dist-info distributions, the working set will assume that the[39;00m
+[1;32m   2538[0m [38;5;66;03m# requirements for that extra are purely optional and skip over them.[39;00m
+[1;32m   2539[0m reqs [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mdist[38;5;241m.[39mrequires([38;5;28mself[39m[38;5;241m.[39mextras)
+[0;32m-> 2540[0m items [38;5;241m=[39m [43mworking_set[49m[38;5;241;43m.[39;49m[43mresolve[49m[43m([49m[43mreqs[49m[43m,[49m[43m [49m[43menv[49m[43m,[49m[43m [49m[43minstaller[49m[43m,[49m[43m [49m[43mextras[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mextras[49m[43m)[49m
+[1;32m   2541[0m [38;5;28mlist[39m([38;5;28mmap[39m(working_set[38;5;241m.[39madd, items))
+
+File [0;32m~/micromamba/envs/mom1env/lib/python3.8/site-packages/pkg_resources/__init__.py:829[0m, in [0;36mWorkingSet.resolve[0;34m(self, requirements, env, installer, replace_conflicting, extras)[0m
+[1;32m    826[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m req_extras[38;5;241m.[39mmarkers_pass(req, extras):
+[1;32m    827[0m     [38;5;28;01mcontinue[39;00m
+[0;32m--> 829[0m dist [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_resolve_dist[49m[43m([49m
+[1;32m    830[0m [43m    [49m[43mreq[49m[43m,[49m[43m [49m[43mbest[49m[43m,[49m[43m [49m[43mreplace_conflicting[49m[43m,[49m[43m [49m[43menv[49m[43m,[49m[43m [49m[43minstaller[49m[43m,[49m[43m [49m[43mrequired_by[49m[43m,[49m[43m [49m[43mto_activate[49m
+[1;32m    831[0m [43m[49m[43m)[49m
+[1;32m    833[0m [38;5;66;03m# push the new requirements onto the stack[39;00m
+[1;32m    834[0m new_requirements [38;5;241m=[39m dist[38;5;241m.[39mrequires(req[38;5;241m.[39mextras)[::[38;5;241m-[39m[38;5;241m1[39m]
+
+File [0;32m~/micromamba/envs/mom1env/lib/python3.8/site-packages/pkg_resources/__init__.py:875[0m, in [0;36mWorkingSet._resolve_dist[0;34m(self, req, best, replace_conflicting, env, installer, required_by, to_activate)[0m
+[1;32m    872[0m [38;5;28;01mif[39;00m dist [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m req:
+[1;32m    873[0m     [38;5;66;03m# Oops, the "best" so far conflicts with a dependency[39;00m
+[1;32m    874[0m     dependent_req [38;5;241m=[39m required_by[req]
+[0;32m--> 875[0m     [38;5;28;01mraise[39;00m VersionConflict(dist, req)[38;5;241m.[39mwith_context(dependent_req)
+[1;32m    876[0m [38;5;28;01mreturn[39;00m dist
+
+[0;31mVersionConflict[0m: (numpy 1.24.4 (/Users/moh/micromamba/envs/mom1env/lib/python3.8/site-packages), Requirement.parse('numpy<1.24'))
+

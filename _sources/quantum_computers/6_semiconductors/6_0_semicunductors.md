@@ -1,0 +1,56 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+:::::{grid}
+::::{grid-item-card}
+:shadow: lg
+
+```{grid-item-card}
+:shadow: lg
+![D44](_static/D44.png)
+```
+
+::::
+:::::
+
+# Semiconductor-based qubits
+
+Semiconductor-based qubits leverage the well-established fabrication processes from the semiconductor industry, making them attractive for scalable quantum computation. Let's delve into the details of each categor
+
+## Quantum Dots
+
+Quantum dots are nanoscale semiconductor structures that confine electrons in all three spatial dimensions, leading them to sometimes be termed "artificial atoms."
+
+1. **Formation of Quantum Dots:** Quantum dots can be formed in a semiconductor material (like silicon or gallium arsenide) by applying voltages using gate electrodes. This confines electrons in a small region of space.
+2. **Spin Qubits:**  The quantum information in quantum dots is often encoded in the spin of the electron, which can be in a superposition of its two possible states: "spin-up" and "spin-down." External magnetic fields and microwave pulses can be used to initialize, manipulate, and read out the spin state.
+3. **Two-Qubit Operations:** Interactions between neighboring quantum dots can be used to create two-qubit gates. For instance, the exchange interaction can mediate spin interactions between adjacent dots.
+4. **Advantages & Challenges:** Quantum dots leverage existing semiconductor technology, making them potentially scalable. However, ensuring long coherence times, especially in materials with a lot of nuclear spins, and achieving high-fidelity gates are challenges.
+
+## Silicon Qubits
+
+**Silicon qubits** are a subset of quantum dot qubits but focus specifically on silicon as the material of choice.
+
+1. **Isotopically Pure Silicon:** Natural silicon contains about 4.7% of the isotope silicon-29, which has a non-zero nuclear spin and can introduce noise into the qubit. Using isotopically enriched silicon-28 (which has zero nuclear spin) can significantly enhance the qubit's coherence time.
+2. **Electron & Nuclear Spins:** Both the spin of the electron and the nuclear spin of a phosphorus donor atom in silicon can be used as qubits. Manipulation and readout are typically achieved using a combination of magnetic fields, microwave pulses, and RF pulses.
+3. **Advantages & Challenges:** Silicon has a mature fabrication industry, potentially making silicon qubits more scalable. The use of isotopically pure silicon can lead to very long coherence times. Challenges involve reliably creating and interfacing with individual donor atoms or quantum dots in silicon.
+
+## Aluminum Gallium Arsenide (AlGaAs) Qubits
+
+**AlGaAs qubits** are also a subset of quantum dot qubits, but they use a different semiconductor material than silicon.
+
+1. **Formation of Quantum Dots in AlGaAs:** Quantum dots in AlGaAs are typically formed at the interface between AlGaAs and another semiconductor, gallium arsenide (GaAs). This heterostructure can confine electrons at the interface.
+2. **Manipulating Electron Spins:** Similar to other quantum dots, qubits in AlGaAs are often based on the spin of the confined electron. Initialization, manipulation, and readout mechanisms are similar to those in silicon quantum dots.
+3. **Advantages & Challenges:** AlGaAs/GaAs heterostructures have a long history in semiconductor physics, particularly in the study of two-dimensional electron gases and the fractional quantum Hall effect. They can have good electron mobility and potentially long coherence times. However, as with other quantum dot systems, achieving high-fidelity gates and ensuring long coherence times in the presence of nuclear spins are challenges.
+
+In all these semiconductor-based systems, the goal is to harness the precision and scalability of semiconductor fabrication processes to build reliable and large-scale quantum computers. While they share many of the same challenges as other qubit technologies (like decoherence and gate fidelity), their compatibility with existing technology platforms offers a promising path forward.
